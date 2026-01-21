@@ -36,10 +36,12 @@ const Header = () => {
   const navGroups = {
     company: [
       { href: "/about", label: "Group Profile" },
-      { href: "/social-responsibility", label: "Responsibility" },
-      { href: "/environment", label: "Environment" },
       { href: "/quality", label: "Quality" },
+      { href: "/environment", label: "Environment" },
+      { href: "/social-responsibility", label: "Social Responsibility" },
       { href: "/careers", label: "Careers" },
+
+      
     ],
     showcase: [
       { href: "/fashion", label: "Fashion" },

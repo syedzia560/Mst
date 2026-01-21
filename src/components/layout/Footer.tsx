@@ -11,6 +11,8 @@ const Footer = () => {
     { href: "/services", label: "Services" },
     { href: "/quality", label: "Quality" },
     { href: "/contact", label: "Contact" },
+    { href: "/careers", label: "Careers"},
+    
   ];
 
   const services = [
@@ -18,7 +20,7 @@ const Footer = () => {
     "Chrome & Vegetable Tanning",
     "Wet Blue & Crust Leather",
     "Finishing & Dyeing",
-    "Bulk Export",
+    "Global Export",
   ];
 
   const socialLinks = [
