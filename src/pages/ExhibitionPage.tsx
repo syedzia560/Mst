@@ -12,6 +12,7 @@ const ExhibitionPage = () => {
             <img 
               src="/images/hero-bg.jpg" 
               alt="MST Facility" 
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/60" />
@@ -37,7 +38,7 @@ const ExhibitionPage = () => {
                         {/* LeatherTech */}
                         <div className="bg-white/[0.02] p-6 rounded-none border border-white/10 shadow-xl backdrop-blur-sm hover:border-gold/30 transition-all group">
                             <div className="h-32 mb-6 rounded bg-white/5 flex items-center justify-center p-4">
-                               <img src="/images/exhibitions/leathertech.png" alt="LeatherTech" className="max-h-full max-w-full object-contain" />
+                               <img src="/images/exhibitions/leathertech.png" alt="LeatherTech" loading="lazy" className="max-h-full max-w-full object-contain" />
                             </div>
                             <h3 className="text-2xl font-sans font-bold text-white mb-2 group-hover:text-gold transition-colors uppercase tracking-wider">LeatherTech</h3>
                             <p className="text-gray-400 font-medium font-sans uppercase tracking-[0.2em] text-xs">Bangladesh</p>
@@ -49,7 +50,7 @@ const ExhibitionPage = () => {
                         {/* Lineapelle NY */}
                         <div className="bg-card p-6 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all group">
                              <div className="h-32 mb-6 rounded bg-white flex items-center justify-center p-4">
-                               <img src="/images/exhibitions/lineapelle.png" alt="Lineapelle NY" className="max-h-full max-w-full object-contain" />
+                               <img src="/images/exhibitions/lineapelle.png" alt="Lineapelle NY" loading="lazy" className="max-h-full max-w-full object-contain" />
                             </div>
                             <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Lineapelle</h3>
                             <p className="text-muted-foreground font-medium">New York</p>
@@ -61,7 +62,7 @@ const ExhibitionPage = () => {
                         {/* Lineapelle Milan */}
                         <div className="bg-card p-6 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all group">
                             <div className="h-32 mb-6 rounded bg-white flex items-center justify-center p-4">
-                               <img src="/images/exhibitions/lineapelle.png" alt="Lineapelle Milan" className="max-h-full max-w-full object-contain" />
+                               <img src="/images/exhibitions/lineapelle.png" alt="Lineapelle Milan" loading="lazy" className="max-h-full max-w-full object-contain" />
                             </div>
                             <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">Lineapelle</h3>
                             <p className="text-muted-foreground font-medium">Milan</p>
@@ -73,7 +74,7 @@ const ExhibitionPage = () => {
                         {/* APLF */}
                         <div className="bg-card p-6 rounded-xl border border-border/50 shadow-sm hover:shadow-md transition-all group">
                             <div className="h-32 mb-6 rounded bg-white flex items-center justify-center p-4">
-                               <img src="/images/exhibitions/aplf.png" alt="APLF" className="max-h-full max-w-full object-contain" />
+                               <img src="/images/exhibitions/aplf.png" alt="APLF" loading="lazy" className="max-h-full max-w-full object-contain" />
                             </div>
                             <h3 className="text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">APLF</h3>
                             <p className="text-muted-foreground font-medium">Hong Kong</p>

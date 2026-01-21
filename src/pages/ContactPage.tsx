@@ -78,6 +78,7 @@ const ContactPage = () => {
             <img 
               src="/images/hero-bg.jpg" 
               alt="MST Facility" 
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/60" />

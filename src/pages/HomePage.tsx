@@ -71,6 +71,7 @@ const HomePage = () => {
               loop 
               muted 
               playsInline
+              preload="auto"
               className="w-full h-full object-cover"
               poster="/factory-hero.jpg"
             >
@@ -155,6 +156,7 @@ const HomePage = () => {
                          <div className="relative rounded-none overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-black">
                             <video 
                                 controls
+                                preload="metadata"
                                 className="w-full aspect-video object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                                 poster="/factory-hero.jpg"
                             >
@@ -176,15 +178,15 @@ const HomePage = () => {
                                         <span className="w-12 h-[1px] bg-gold" />
                                         Legacy
                                      </p>
-                                     <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
-                                        Visionary <br /><span className="text-gold/90">Leadership</span>
+                                    <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
+                                        Visionary Leadership
                                      </h2>
                                  </div>
                                  
                                  <div className="relative">
                                      <span className="absolute -top-6 -left-4 text-7xl text-gold/10 font-serif leading-none">"</span>
                                      <blockquote className="text-2xl md:text-3xl text-gray-200 font-serif italic leading-relaxed relative z-10">
-                                        At Shafi, we don't just make leather; <span className="text-white font-medium not-italic">we create art that lasts a lifetime.</span> Our legacy is built on the perfect balance of traditional craftsmanship and modern innovation.
+                                        At Shafi, we don't just make leather; we create art that lasts a lifetime. Our legacy is built on the perfect balance of traditional craftsmanship and modern innovation.
                                      </blockquote>
                                  </div>
                                  
@@ -226,7 +228,7 @@ const HomePage = () => {
                   Who We Are
                 </p>
                 <h2 className="text-4xl lg:text-6xl font-serif font-bold text-white leading-none uppercase">
-                    More Than Just<br /><span className="text-white/50">A Tannery</span>
+                    More Than Just<br />A Tannery
                 </h2>
                 <div className="space-y-6 text-gray-400 text-lg leading-relaxed font-light">
                     <p>
@@ -259,6 +261,7 @@ const HomePage = () => {
                          <div className="relative rounded-none overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-black">
                             <video 
                                 controls
+                                preload="metadata"
                                 className="w-full aspect-video object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
                                 poster="/factory-hero.jpg"
                             >
@@ -281,14 +284,14 @@ const HomePage = () => {
                                         Leadership
                                      </p>
                                      <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
-                                        Driving <br /><span className="text-gold/90">Innovation</span>
+                                        Driving Innovation
                                      </h2>
                                  </div>
                                  
                                  <div className="relative">
                                      <span className="absolute -top-6 -left-4 text-7xl text-gold/10 font-serif leading-none">"</span>
                                      <blockquote className="text-2xl md:text-3xl text-gray-200 font-serif italic leading-relaxed relative z-10">
-                                        Embracing modern technology while honoring our heritage defines our path forward. <span className="text-white font-medium not-italic">We are committed to sustainable excellence</span> in every piece of leather we craft.
+                                        Embracing modern technology while honoring our heritage defines our path forward. We are committed to sustainable excellence in every piece of leather we craft.
                                      </blockquote>
                                  </div>
                                  

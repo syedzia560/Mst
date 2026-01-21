@@ -12,6 +12,7 @@ const EnvironmentPage = () => {
             <img 
               src="/images/hero-bg.jpg" 
               alt="MST Facility" 
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/60" />
@@ -30,7 +31,7 @@ const EnvironmentPage = () => {
                 <div className="max-w-4xl mx-auto space-y-12">
                     {/* Environment Overview */}
                     <div>
-                        <h2 className="text-3xl font-serif font-bold text-primary mb-6">ENVIRONMENT</h2>
+                        <h2 className="text-3xl font-serif font-bold text-white mb-6">ENVIRONMENT</h2>
                         <div className="space-y-6 text-lg text-gray-400 font-light leading-relaxed">
                             <p>
                                 MST management always believes in promotion of safe and healthy environment. Becoming an <span className="text-white font-medium">“Eco Friendly”</span> tannery is an ultimate goal of MST’s management.

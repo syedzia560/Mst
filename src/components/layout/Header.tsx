@@ -64,7 +64,7 @@ const Header = () => {
         <div className="flex items-center justify-between h-24">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-4 group">
-            <img src={logo} alt="Shafi Tannery" className="h-16 w-auto" />
+            <img src={logo} alt="Shafi Tannery" loading="eager" className="h-16 w-auto" />
             <div className="hidden sm:block">
                <span className="text-3xl font-serif font-bold text-white tracking-widest uppercase group-hover:text-gold transition-colors">Shafi</span>
               <p className="text-xs text-gray-400 tracking-[0.3em] uppercase">Your Leather Specialist</p>

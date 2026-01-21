@@ -126,6 +126,7 @@ const ServicesPage = () => {
             <img 
               src="/images/hero-bg.jpg" 
               alt="MST Facility" 
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/60" />
@@ -253,6 +254,7 @@ const ServicesPage = () => {
                     <img
                       src={product.image}
                       alt={product.name}
+                      loading="lazy"
                       className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     />
                   </div>

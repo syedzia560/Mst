@@ -36,7 +36,7 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="Shafi Tannery" className="h-10 w-auto rounded-sm brightness-110" />
+              <img src={logo} alt="Shafi Tannery" loading="lazy" className="h-10 w-auto rounded-sm brightness-110" />
               <div>
                  <span className="text-2xl font-serif font-bold tracking-[0.2em] uppercase text-white leading-none">Shafi</span>
                 <p className="text-[10px] text-gray-500 tracking-[0.3em] uppercase">Your Leather Specialist</p>

@@ -365,6 +365,7 @@ const CareersPage = () => {
             <img
               src="/images/factory-hero.jpg"
               alt="Careers at MST"
+              loading="eager"
               className="w-full h-full object-cover grayscale"
             />
           </div>

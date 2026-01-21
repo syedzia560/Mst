@@ -47,6 +47,7 @@ const AboutPage = () => {
             <img 
               src="/images/hero-bg.jpg" 
               alt="MST Facility" 
+              loading="eager"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-black/60" /> {/* Dark overlay for readability */}
@@ -212,14 +213,14 @@ const AboutPage = () => {
         </section>
 
         {/* Certifications */}
-        <section className="py-24 bg-leather-gradient text-primary-foreground">
+        <section className="py-24 bg-premium-dark">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold mb-6">
+                <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
                   Certifications & Compliance
                 </h2>
-                <p className="text-primary-foreground/80 mb-8">
+                <p className="text-muted-foreground mb-8 text-lg">
                   We maintain the highest standards of quality and environmental 
                   responsibility, certified by leading international bodies.
                 </p>
@@ -227,27 +228,27 @@ const AboutPage = () => {
                   {certifications.map((cert, index) => (
                     <li key={index} className="flex items-center gap-3">
                       <CheckCircle className="w-5 h-5 text-gold flex-shrink-0" />
-                      <span>{cert}</span>
+                      <span className="text-foreground">{cert}</span>
                     </li>
                   ))}
                 </ul>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-primary-foreground/10 p-8 rounded-xl text-center">
+                <div className="bg-card/50 border border-primary/10 p-8 rounded-xl text-center hover:bg-card transition-colors duration-300">
                   <p className="text-4xl font-serif font-bold text-gold">LWG</p>
-                  <p className="text-sm mt-2">Gold Rated</p>
+                  <p className="text-sm text-muted-foreground mt-2">Gold Rated</p>
                 </div>
-                <div className="bg-primary-foreground/10 p-8 rounded-xl text-center">
+                <div className="bg-card/50 border border-primary/10 p-8 rounded-xl text-center hover:bg-card transition-colors duration-300">
                   <p className="text-4xl font-serif font-bold text-gold">ISO</p>
-                  <p className="text-sm mt-2">9001 & 14001</p>
+                  <p className="text-sm text-muted-foreground mt-2">9001 & 14001</p>
                 </div>
-                <div className="bg-primary-foreground/10 p-8 rounded-xl text-center">
+                <div className="bg-card/50 border border-primary/10 p-8 rounded-xl text-center hover:bg-card transition-colors duration-300">
                   <p className="text-4xl font-serif font-bold text-gold">REACH</p>
-                  <p className="text-sm mt-2">Compliant</p>
+                  <p className="text-sm text-muted-foreground mt-2">Compliant</p>
                 </div>
-                <div className="bg-primary-foreground/10 p-8 rounded-xl text-center">
+                <div className="bg-card/50 border border-primary/10 p-8 rounded-xl text-center hover:bg-card transition-colors duration-300">
                   <p className="text-4xl font-serif font-bold text-gold">ZLD</p>
-                  <p className="text-sm mt-2">Zero Discharge</p>
+                  <p className="text-sm text-muted-foreground mt-2">Zero Discharge</p>
                 </div>
               </div>
             </div>
