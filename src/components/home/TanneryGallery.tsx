@@ -11,20 +11,6 @@ const galleryItems = [
     link: "/about"
   },
   {
-    id: 2,
-    image: "/images/tannery/factory_arch.jpg",
-    title: "Entrance Arch",
-    subtitle: "Modern Infrastructure",
-    link: "/about"
-  },
-  {
-    id: 3,
-    image: "/images/tannery/factory_pathway.jpg",
-    title: "Green Premises",
-    subtitle: "Environmental Care",
-    link: "/about"
-  },
-  {
     id: 4,
     image: "/images/tannery/effluent_treatment_plant.jpg",
     title: "Sustainability",
@@ -98,12 +84,11 @@ const TanneryGallery = () => {
         </div>
 
         {/* Gallery Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-4 auto-rows-[300px] gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 auto-rows-[200px] sm:auto-rows-[300px] gap-2 md:gap-4">
           {galleryItems.map((item) => (
-            <Link 
+            <div 
               key={item.id} 
-              to={item.link}
-              className="group relative overflow-hidden block w-full h-full"
+              className="group relative overflow-hidden block w-full h-full cursor-default"
             >
               <div className="absolute inset-0 bg-gray-900/20" /> {/* Background overlay */}
               
@@ -118,27 +103,21 @@ const TanneryGallery = () => {
               <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent opacity-60 group-hover:opacity-80 transition-opacity duration-300" />
               
               {/* Content */}
-              <div className="absolute inset-0 p-8 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+              <div className="absolute inset-0 p-4 sm:p-8 flex flex-col justify-end translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
                 <div className="bg-gold h-[2px] w-0 group-hover:w-16 transition-all duration-500 mb-4" />
                 
-                <h3 className="text-2xl font-sans font-bold text-white uppercase tracking-wide mb-1">
+                <h3 className="text-lg sm:text-2xl font-sans font-bold text-white uppercase tracking-wide mb-1">
                   {item.title}
                 </h3>
                 
                 <p className="text-gold text-xs font-bold uppercase tracking-[0.2em] transform opacity-0 translate-y-4 group-hover:opacity-100 group-hover:translate-y-0 transition-all duration-500 delay-100">
                   {item.subtitle}
                 </p>
-                
-                <div className="absolute top-6 right-6 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-500 delay-200">
-                   <div className="p-3 border border-white/20 rounded-full bg-white/10 backdrop-blur-sm">
-                     <ArrowRight className="w-5 h-5 text-white" />
-                   </div>
-                </div>
               </div>
               
               {/* Border Hover Effect */}
               <div className="absolute inset-0 border border-white/10 group-hover:border-gold/30 transition-colors duration-500" />
-            </Link>
+            </div>
           ))}
         </div>
         

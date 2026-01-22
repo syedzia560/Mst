@@ -86,7 +86,7 @@ const ContactPage = () => {
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <div className="max-w-3xl">
               <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-4">Get In Touch</p>
-              <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Contact Us</h1>
+              <h1 className="text-3xl md:text-6xl font-serif font-bold text-white mb-6">Contact Us</h1>
               <p className="text-lg text-gray-200 leading-relaxed">
                 Have questions about our leather products or tanning services? 
                 Our team is here to assist you with your global sourcing needs.
@@ -96,7 +96,7 @@ const ContactPage = () => {
         </section>
 
         {/* Contact Content */}
-        <section className="py-24 bg-background">
+        <section className="py-16 md:py-24 bg-background">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid lg:grid-cols-5 gap-12">
               {/* Contact Info */}

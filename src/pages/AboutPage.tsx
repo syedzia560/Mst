@@ -25,21 +25,11 @@ const certifications = [
   "OEKO-TEX Standard 100",
 ];
 
-const facilities = [
-  { name: "Beam House", description: "Soaking, liming, unhairing, fleshing, and splitting operations" },
-  { name: "Tanning Drums", description: "Chrome and vegetable tanning with 20+ rotating drums" },
-  { name: "Wet Finishing", description: "Re-tanning, dyeing, and fatliquoring facilities" },
-  { name: "Dry Finishing", description: "Staking, buffing, embossing, and coating lines" },
-  { name: "Testing Lab", description: "In-house quality testing for physical and chemical properties" },
-  { name: "Effluent Plant", description: "Zero liquid discharge treatment system" },
-];
-
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
       <main>
-        {/* Hero */}
         {/* Hero */}
         <section className="relative pt-32 pb-20 min-h-[60vh] flex items-center overflow-hidden">
           {/* Background Image with Overlay */}
@@ -50,7 +40,7 @@ const AboutPage = () => {
               loading="eager"
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-black/60" /> {/* Dark overlay for readability */}
+            <div className="absolute inset-0 bg-black/60" />
           </div>
 
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
@@ -58,7 +48,7 @@ const AboutPage = () => {
               <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
                 Since 1959
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">
                 Shafi Group Profile
               </h1>
               <p className="text-lg text-gray-200 leading-relaxed">
@@ -73,7 +63,7 @@ const AboutPage = () => {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-16 items-start">
               <div className="space-y-6">
-                 <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-8">
+                 <h2 className="text-2xl md:text-4xl font-serif font-bold text-foreground mb-8">
                   Corporate Overview
                 </h2>
                 <p className="text-muted-foreground leading-relaxed text-lg">
@@ -117,42 +107,18 @@ const AboutPage = () => {
             </div>
             
             <div className="mt-16 max-w-4xl mx-auto text-center">
-               <p className="text-gray-300 leading-relaxed text-xl font-serif italic">
+               <p className="text-gray-300 leading-relaxed text-lg md:text-xl font-serif italic px-4">
                 "It is a long way to go, but with the blessings of Allah and with combined and concerted efforts of the management, staff and workers, we intend to fulfill our ambition of handling the leather from raw skins to finished products. SHAFI GROUP as a whole and each company of the group has maintained growth from year to year. It is for this reason that the name 'SHAFI' has now become synonymous with the best in quality and reliability in business from Pakistan."
               </p>
             </div>
-
           </div>
         </section>
 
-        {/* Tannery Facilities */}
-        <section className="py-24 bg-cream">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
-                Our Tannery Facilities
-              </h2>
-              <p className="text-muted-foreground">
-                Complete infrastructure for hide processing and leather production
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {facilities.map((facility, index) => (
-                <div key={index} className="bg-card p-6 rounded-xl shadow-sm">
-                  <h3 className="font-serif font-bold text-foreground mb-2">{facility.name}</h3>
-                  <p className="text-sm text-muted-foreground">{facility.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* Timeline */}
+        {/* Journey */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
+              <h2 className="text-2xl md:text-4xl font-serif font-bold text-foreground mb-4">
                 Our Journey
               </h2>
               <p className="text-muted-foreground">
@@ -170,11 +136,11 @@ const AboutPage = () => {
                       index % 2 === 0 ? "md:flex-row" : "md:flex-row-reverse"
                     }`}
                   >
-                    <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"} pl-20 md:pl-0`}>
-                      <div className="bg-card p-6 rounded-xl shadow-sm">
-                        <span className="text-primary font-serif font-bold text-xl">{item.year}</span>
-                        <h3 className="font-sans font-bold text-white uppercase tracking-wider mt-1">{item.title}</h3>
-                        <p className="text-sm text-muted-foreground mt-2">{item.description}</p>
+                    <div className={`flex-1 ${index % 2 === 0 ? "md:text-right" : "md:text-left"} pl-12 md:pl-0`}>
+                      <div className="bg-card p-4 md:p-6 rounded-xl shadow-sm">
+                        <span className="text-primary font-serif font-bold text-lg md:text-xl">{item.year}</span>
+                        <h3 className="font-sans font-bold text-white text-xs md:text-sm uppercase tracking-wider mt-1">{item.title}</h3>
+                        <p className="text-xs md:text-sm text-muted-foreground mt-2">{item.description}</p>
                       </div>
                     </div>
                     <div className="absolute left-8 md:static w-4 h-4 bg-primary rounded-full border-4 border-background shadow md:-translate-x-0" />
@@ -190,7 +156,7 @@ const AboutPage = () => {
         <section className="py-24 bg-cream">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="text-center max-w-2xl mx-auto mb-16">
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
+              <h2 className="text-2xl md:text-4xl font-serif font-bold text-foreground mb-4">
                 Our Core Values
               </h2>
               <p className="text-muted-foreground">
@@ -217,7 +183,7 @@ const AboutPage = () => {
           <div className="container mx-auto px-4 lg:px-8">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
+                <h2 className="text-2xl md:text-4xl font-serif font-bold text-foreground mb-6">
                   Certifications & Compliance
                 </h2>
                 <p className="text-muted-foreground mb-8 text-lg">
@@ -258,7 +224,7 @@ const AboutPage = () => {
         {/* CTA */}
         <section className="py-24 bg-background">
           <div className="container mx-auto px-4 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
+            <h2 className="text-2xl md:text-4xl font-serif font-bold text-foreground mb-6">
               Want to Visit Our Tannery?
             </h2>
             <p className="text-muted-foreground max-w-2xl mx-auto mb-8">

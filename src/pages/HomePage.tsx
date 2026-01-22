@@ -95,10 +95,10 @@ const HomePage = () => {
                     <span className="w-12 h-[1px] bg-gold" />
                   </p>
                   <h1 className="font-serif font-bold text-white leading-none tracking-tight">
-                    <span className="block text-4xl md:text-6xl lg:text-7xl mb-2 text-white/90 uppercase">
+                    <span className="block text-3xl md:text-6xl lg:text-7xl mb-2 text-white/90 uppercase">
                        We Are Innovators
                     </span>
-                    <span className="block text-5xl md:text-7xl lg:text-9xl text-gold uppercase drop-shadow-2xl">
+                    <span className="block text-4xl md:text-7xl lg:text-9xl text-gold uppercase drop-shadow-2xl">
                        We Are Shafi
                     </span>
                   </h1>
@@ -178,7 +178,7 @@ const HomePage = () => {
                                         <span className="w-12 h-[1px] bg-gold" />
                                         Legacy
                                      </p>
-                                    <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
+                                    <h2 className="text-3xl md:text-6xl font-serif font-bold text-white leading-tight">
                                         Visionary Leadership
                                      </h2>
                                  </div>
@@ -283,7 +283,7 @@ const HomePage = () => {
                                         <span className="w-12 h-[1px] bg-gold" />
                                         Leadership
                                      </p>
-                                     <h2 className="text-4xl md:text-6xl font-serif font-bold text-white leading-tight">
+                                     <h2 className="text-3xl md:text-6xl font-serif font-bold text-white leading-tight">
                                         Driving Innovation
                                      </h2>
                                  </div>
@@ -350,7 +350,7 @@ const HomePage = () => {
                 Tannery Operations
                 <span className="w-8 h-[1px] bg-gold" />
               </p>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-white uppercase">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold text-white uppercase">
                 Hide-to-Leather Processing
               </h2>
             </div>
@@ -392,7 +392,7 @@ const HomePage = () => {
                 Expertise
                 <span className="w-8 h-[1px] bg-gold" />
               </p>
-              <h2 className="text-4xl md:text-5xl font-serif font-bold text-white uppercase">
+              <h2 className="text-3xl md:text-5xl font-serif font-bold text-white uppercase">
                 Tanning Methods
               </h2>
             </div>
@@ -423,7 +423,7 @@ const HomePage = () => {
           <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
             <div className="max-w-4xl mx-auto">
               <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">Partner With Us</p>
-              <h2 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold mb-8 leading-none uppercase text-white">
+              <h2 className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold mb-8 leading-none uppercase text-white">
                 Ready to Create<br />Exceptional Leather?
               </h2>
               <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-12 font-light">

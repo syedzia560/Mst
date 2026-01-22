@@ -66,8 +66,8 @@ const Header = () => {
           <Link to="/" className="flex items-center gap-4 group">
             <img src={logo} alt="Shafi Tannery" loading="eager" className="h-16 w-auto" />
             <div className="hidden sm:block">
-               <span className="text-3xl font-serif font-bold text-white tracking-widest uppercase group-hover:text-gold transition-colors">Shafi</span>
-              <p className="text-xs text-gray-400 tracking-[0.3em] uppercase">Your Leather Specialist</p>
+               <span className="text-2xl lg:text-3xl font-serif font-bold text-white tracking-widest uppercase group-hover:text-gold transition-colors">Shafi</span>
+              <p className="text-[10px] lg:text-xs text-gray-400 tracking-[0.2em] lg:tracking-[0.3em] uppercase">Your Leather Specialist</p>
             </div>
           </Link>
 
