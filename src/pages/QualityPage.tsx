@@ -46,16 +46,16 @@ const qualityFeatures = [
     icon: Shield,
     title: "Standards Compliance",
     description: "All products meet international standards including REACH, OEKO-TEX, and LWG requirements.",
-    coverImage: "/images/standards/IMG_1547.webp",
+    coverImage: "/images/standards/optimized/IMG_1547.webp",
     gallery: [
-      "/images/standards/IMG_1547.webp",
-      "/images/standards/IMG_1553.webp",
-      "/images/standards/IMG_1555.webp",
-      "/images/standards/IMG_1556.webp",
-      "/images/standards/IMG_1559.webp",
-      "/images/standards/IMG_1562.webp",
-      "/images/standards/IMG_1568.webp",
-      "/images/standards/IMG_1572.webp",
+      "/images/standards/optimized/IMG_1547.webp",
+      "/images/standards/optimized/IMG_1553.webp",
+      "/images/standards/optimized/IMG_1555.webp",
+      "/images/standards/optimized/IMG_1556.webp",
+      "/images/standards/optimized/IMG_1559.webp",
+      "/images/standards/optimized/IMG_1562.webp",
+      "/images/standards/optimized/IMG_1568.webp",
+      "/images/standards/optimized/IMG_1572.webp",
     ]
   },
 ];
@@ -121,6 +121,7 @@ const GalleryImage = ({ src, alt, onClick }: { src: string; alt: string; onClick
         alt={alt}
         loading="lazy"
         decoding="async"
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
         onLoad={() => setIsLoaded(true)}
         className={`w-full h-full object-cover transition-all duration-1000 group-hover:scale-110 ${
           isLoaded ? 'opacity-100' : 'opacity-0'
