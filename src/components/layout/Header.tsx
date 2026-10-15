@@ -56,35 +56,43 @@ const Header = () => {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled 
-          ? "bg-background/95 backdrop-blur-md border-b border-white/10 py-2" 
-          : "bg-transparent py-4 border-b border-transparent"
+          ? "bg-background/95 backdrop-blur-md border-b border-white/10 py-2 shadow-2xl" 
+          : "bg-gradient-to-b from-background/90 via-background/50 to-transparent py-4 border-b border-white/5"
       )}
     >
       <div className="container mx-auto px-4 lg:px-8">
-        <div className="flex items-center justify-between h-24">
+        <div className="flex items-center justify-between h-20 md:h-22">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3.5 group" aria-label="Muhammad Shafi Tanneries Home">
-            <div className="relative flex items-center justify-center px-2 py-1.5 rounded-sm bg-white/[0.96] shadow-md shadow-black/30 ring-1 ring-gold/40 transition-all duration-300 group-hover:ring-gold group-hover:bg-white flex-shrink-0">
+            <div className="relative flex items-center justify-center p-2 rounded-lg bg-gradient-to-b from-white via-white to-neutral-100 shadow-[0_4px_20px_rgba(0,0,0,0.45)] ring-1 ring-gold/40 transition-all duration-300 group-hover:ring-gold group-hover:shadow-[0_4px_25px_rgba(197,160,89,0.3)] flex-shrink-0">
               <img 
                 src={logo} 
                 alt="Muhammad Shafi Tanneries" 
                 loading="eager" 
-                className="h-10 md:h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+                className="h-10 md:h-11 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
               />
             </div>
-            <div className="hidden sm:block">
-               <span className="text-2xl lg:text-3xl font-serif font-bold text-white tracking-widest uppercase group-hover:text-gold transition-colors">Shafi</span>
-              <p className="text-[10px] lg:text-xs text-gray-400 tracking-[0.2em] lg:tracking-[0.3em] uppercase">Your Leather Specialist</p>
+            <div className="hidden sm:flex flex-col justify-center">
+              <span className="text-xl lg:text-2xl font-serif font-bold text-white tracking-[0.16em] uppercase group-hover:text-gold transition-colors duration-300">
+                Shafi
+              </span>
+              <p className="text-[10px] text-gray-400 font-sans tracking-[0.24em] uppercase font-medium">
+                Your Leather Specialist
+              </p>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden xl:flex items-center gap-4">
+          <div className="hidden xl:flex items-center gap-2">
             <NavigationMenu>
-              <NavigationMenuList>
+              <NavigationMenuList className="gap-1">
                 <NavigationMenuItem>
                   <Link to="/">
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white hover:bg-white/10 hover:text-gold uppercase tracking-wider text-sm font-bold", location.pathname === "/" && "text-gold")}>
+                    <NavigationMenuLink className={cn(
+                      navigationMenuTriggerStyle(), 
+                      "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2", 
+                      location.pathname === "/" && "text-gold font-semibold"
+                    )}>
                       Home
                     </NavigationMenuLink>
                   </Link>
@@ -92,25 +100,29 @@ const Header = () => {
 
                 <NavigationMenuItem>
                   <Link to="/services">
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white hover:bg-white/10 hover:text-gold uppercase tracking-wider text-sm font-bold", location.pathname === "/services" && "text-gold")}>
+                    <NavigationMenuLink className={cn(
+                      navigationMenuTriggerStyle(), 
+                      "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2", 
+                      location.pathname === "/services" && "text-gold font-semibold"
+                    )}>
                       Services
                     </NavigationMenuLink>
                   </Link>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white hover:bg-white/10 hover:text-gold uppercase tracking-wider text-sm font-bold">
+                  <NavigationMenuTrigger className="bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2">
                     Company
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4 bg-background border border-white/10">
+                    <ul className="grid w-[220px] gap-1 p-2 bg-card/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-lg">
                       {navGroups.company.map((link) => (
                         <li key={link.href}>
                           <Link
                             to={link.href}
                             className={cn(
-                              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gold/10 hover:text-gold text-sm font-medium",
-                              location.pathname === link.href ? "text-gold" : "text-muted-foreground"
+                              "block select-none rounded-md px-3.5 py-2.5 text-xs tracking-wider uppercase font-medium leading-none no-underline outline-none transition-all hover:bg-gold/10 hover:text-gold",
+                              location.pathname === link.href ? "text-gold bg-gold/5" : "text-gray-300"
                             )}
                           >
                             {link.label}
@@ -122,18 +134,18 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <NavigationMenuTrigger className="bg-transparent text-white hover:bg-white/10 hover:text-gold uppercase tracking-wider text-sm font-bold">
+                  <NavigationMenuTrigger className="bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2">
                     Showcase
                   </NavigationMenuTrigger>
                   <NavigationMenuContent>
-                    <ul className="grid w-[200px] gap-2 p-4 bg-background border border-white/10">
+                    <ul className="grid w-[220px] gap-1 p-2 bg-card/95 backdrop-blur-xl border border-white/10 shadow-2xl rounded-lg">
                       {navGroups.showcase.map((link) => (
                         <li key={link.href}>
                           <Link
                             to={link.href}
                             className={cn(
-                              "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-gold/10 hover:text-gold text-sm font-medium",
-                              location.pathname === link.href ? "text-gold" : "text-muted-foreground"
+                              "block select-none rounded-md px-3.5 py-2.5 text-xs tracking-wider uppercase font-medium leading-none no-underline outline-none transition-all hover:bg-gold/10 hover:text-gold",
+                              location.pathname === link.href ? "text-gold bg-gold/5" : "text-gray-300"
                             )}
                           >
                             {link.label}
@@ -146,7 +158,11 @@ const Header = () => {
 
                 <NavigationMenuItem>
                   <Link to="/agents">
-                    <NavigationMenuLink className={cn(navigationMenuTriggerStyle(), "bg-transparent text-white hover:bg-white/10 hover:text-gold uppercase tracking-wider text-sm font-bold")}>
+                    <NavigationMenuLink className={cn(
+                      navigationMenuTriggerStyle(), 
+                      "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2",
+                      location.pathname === "/agents" && "text-gold font-semibold"
+                    )}>
                       Agents
                     </NavigationMenuLink>
                   </Link>
@@ -158,7 +174,7 @@ const Header = () => {
                 variant="outline" 
                 size="sm" 
                 asChild
-                className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase text-sm tracking-widest font-bold px-8 py-6 ml-6"
+                className="border border-gold/70 bg-gold/5 text-gold hover:bg-gold hover:text-black rounded-sm uppercase text-xs tracking-[0.2em] font-semibold px-6 py-5 ml-4 transition-all duration-300 hover:shadow-[0_0_20px_rgba(197,160,89,0.3)]"
             >
               <Link to="/contact">Contact</Link>
             </Button>
@@ -256,7 +272,7 @@ const Header = () => {
                 Agents
               </Link>
 
-              <Button variant="default" className="w-full mt-4 bg-gold text-black hover:bg-white" asChild>
+              <Button variant="default" className="w-full mt-4 bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs py-5 rounded-sm shadow-md" asChild>
                 <Link to="/contact" onClick={() => setIsMenuOpen(false)}>
                   Contact Us
                 </Link>

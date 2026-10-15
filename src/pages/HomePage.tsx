@@ -1,77 +1,129 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Droplets, Drum, Award, Globe, Beaker, Leaf } from "lucide-react";
+import { 
+  ArrowRight, 
+  Droplets, 
+  Award, 
+  Globe, 
+  Leaf, 
+  ShieldCheck, 
+  FlaskConical, 
+  CheckCircle2, 
+  Layers, 
+  Calendar, 
+  MapPin, 
+  ExternalLink,
+  ChevronRight,
+  Phone,
+  Mail
+} from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
-import TanneryGallery from "@/components/home/TanneryGallery";
 import BespokeGallery from "@/components/home/BespokeGallery";
-import WhoWeAreSlider from "@/components/home/WhoWeAreSlider";
-
 import SEO from "@/components/common/SEO";
 import Counter from "@/components/ui/Counter";
 
 const stats = [
-  { value: 120, suffix: "+", label: "Countries Served" },
-  { value: 25, suffix: "+ Million", label: "Sq. Feet Annual Production" },
+  { value: 120, suffix: "+", label: "Countries Served Globally" },
+  { value: 25, suffix: "+ Million", label: "Sq. Ft. Annual Leather Capacity" },
   { value: 25584, suffix: "", label: "Sq. Meter Production Area" },
 ];
 
-const services = [
+const manufacturingStages = [
   {
-    icon: Droplets,
-    title: "Beam House Operations",
-    description: "Complete pre-tanning processes including soaking, liming, fleshing, and bating for optimal hide preparation.",
+    step: "01",
+    title: "Raw Hide Selection & Beamhouse",
+    description: "Rigorous sorting of raw hides and skins by weight, origin, and substance. Precision soaking, liming, fleshing, and bating prepare the fiber network for uniform tanning.",
+    image: "/images/tannery/raw_material.jpg",
+    metric: "100% Caliper Verification"
   },
   {
-    icon: Drum,
-    title: "Tanning & Crusting",
-    description: "Chrome, vegetable, and combination tanning with expert crusting for superior leather quality.",
+    step: "02",
+    title: "Computerized Rotary Drum Tanning",
+    description: "Automated stainless steel and heavy wooden milling drums regulate liquor circulation, pH equilibrium, and thermal parameters to yield optimum chrome, wet blue, and vegetable tannages.",
+    image: "/images/tannery/tanning_drums.png",
+    metric: "Automated Recipe Control"
   },
   {
-    icon: Beaker,
-    title: "Wet Finishing",
-    description: "Re-tanning, dyeing, and fatliquoring to achieve your desired softness, color, and character.",
+    step: "03",
+    title: "Custom Dyeing & Shade Formulation",
+    description: "High-penetration drum dyeing calibrated against digital spectrophotometers. Deep color absorption with outstanding wet and dry crock fastness for luxury seasonal palettes.",
+    image: "/images/tannery/dyeing.jpg",
+    metric: "Digital Color Tolerance"
   },
   {
-    icon: Globe,
-    title: "Global Export",
-    description: "Reliable export of wet blue, crust, and finished leather to manufacturers worldwide.",
-  },
+    step: "04",
+    title: "Conditioning, Milling & Finishing",
+    description: "Controlled conditioning, dry drum tumbling for natural grain pebble, and advanced automated finishing lines applying micro-protective pigments, oils, and embossed grains.",
+    image: "/images/tannery/finished_leather.jpg",
+    metric: "Precision Surface Finishing"
+  }
 ];
 
-const tanningMethods = [
+const qualityHighlights = [
   {
-    icon: Leaf,
-    title: "Vegetable Tanning",
-    description: "Traditional, eco-friendly tanning using natural tannins from tree bark. Ideal for belts, saddles, and premium goods.",
+    icon: FlaskConical,
+    title: "In-House Physical Testing Lab",
+    description: "Comprehensive testing including Bally flexometer endurance, Martindale abrasion resistance, tear strength, and tensile elongation."
   },
   {
-    icon: Beaker,
-    title: "Chrome Tanning",
-    description: "Modern tanning for soft, supple leather with excellent durability. Preferred for footwear and garments.",
+    icon: ShieldCheck,
+    title: "Chemical Compliance & MRSL",
+    description: "Strict adherence to international consumer safety regulations including REACH, Hexavalent Chromium (Cr VI) elimination, and ZDHC guidelines."
   },
   {
     icon: Award,
-    title: "Combination Tanning",
-    description: "Best of both worlds—combining chrome and vegetable methods for specialized applications.",
+    title: "LWG Gold Rated Quality Standards",
+    description: "Audited against the world's most rigorous leather manufacturing benchmark, ensuring batch-to-batch consistency and technical traceability."
   },
+  {
+    icon: Layers,
+    title: "100% Benchtop Grain Inspection",
+    description: "Every square foot is visually graded and caliper-gauged by veteran hide inspectors prior to export packaging and shipment."
+  }
+];
+
+const leadershipData = [
+  {
+    id: "director",
+    name: "Amjad Hafeez",
+    title: "Director MST",
+    badge: "Legacy & Tannery Operations",
+    quote: "At Shafi, we don't just make leather; we create art that lasts a lifetime. Our legacy is built on the perfect balance of traditional craftsmanship and modern innovation.",
+    video: "/video/director-message.mp4",
+    poster: "/factory-hero.jpg"
+  },
+  {
+    id: "executive-director",
+    name: "Haris Hafeez",
+    title: "Executive Director",
+    badge: "Strategic Vision & Global Growth",
+    quote: "Embracing modern technology while honoring our heritage defines our path forward. We are committed to sustainable excellence in every piece of leather we craft.",
+    video: "/video/executive%20director.mp4",
+    poster: "/factory-hero.jpg"
+  }
 ];
 
 const HomePage = () => {
+  const [activeLeader, setActiveLeader] = useState(leadershipData[0]);
+
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background text-foreground selection:bg-gold selection:text-black">
       <SEO
-        title="LWG Gold Rated Leather Tannery & Exporter"
-        description="Muhammad Shafi Tanneries (Pvt.) Ltd (MST) is Pakistan's premier LWG Gold Rated tannery. Producing over 25M sq. ft of wet blue, crust, and finished leather annually for global fashion houses."
+        title="LWG Gold Rated Leather Tannery & Exporter | Muhammad Shafi Tanneries"
+        description="Muhammad Shafi Tanneries (Pvt.) Ltd is Pakistan's premier LWG Gold Rated export tannery. Producing over 25M sq. ft of wet blue, crust, and finished leather annually for global luxury brands."
         canonicalPath="/"
-        keywords="leather tannery Pakistan, LWG Gold tannery, wet blue leather, crust leather, finished leather, Karachi leather manufacturer, Shafi Group, MST leather"
+        keywords="leather tannery Pakistan, LWG Gold tannery, wet blue leather, crust leather, finished leather, Karachi leather manufacturer, Shafi Group, MST leather, leather exporter Pakistan"
       />
       <Header />
+      
       <main>
-        {/* Hero Section */}
-        {/* Hero Section */}
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
-          {/* Background Video with Overlay */}
+        {/* =========================================================================
+            1. CINEMATIC BRAND HERO SECTION
+            ========================================================================= */}
+        <section className="relative min-h-[92vh] lg:min-h-screen flex items-center justify-center overflow-hidden pt-24 pb-16">
+          {/* Background Video with Cinematic Dark Overlay */}
           <div className="absolute inset-0 z-0">
             <video 
               autoPlay 
@@ -91,373 +143,511 @@ const HomePage = () => {
               className="hidden motion-reduce:block w-full h-full object-cover"
               loading="eager"
             />
-            {/* Darker, cinematic overlay */}
-            <div className="absolute inset-0 bg-black/60" />
-            <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40" />
+            {/* Cinematic dark gradients for maximum legibility */}
+            <div className="absolute inset-0 bg-black/65" />
+            <div className="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-black/75" />
             
-            {/* Subtle animated particles/glows - kept minimal */}
-            <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse opacity-20 pointer-events-none" />
+            {/* Subtle luxury ambient gold glow */}
+            <div className="absolute top-1/4 right-1/4 w-[500px] h-[500px] bg-gold/10 rounded-full blur-[140px] pointer-events-none opacity-40" />
           </div>
           
-          <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-20">
-             <div className="max-w-5xl mx-auto text-center space-y-8 animate-slide-in-up">
-                <div className="space-y-4">
-                  <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center justify-center gap-4 opacity-80">
-                    <span className="w-12 h-[1px] bg-gold" />
-                    Est. 1959
-                    <span className="w-12 h-[1px] bg-gold" />
-                  </p>
-                  <h1 className="font-serif font-bold text-white leading-none tracking-tight">
-                    <span className="block text-3xl md:text-6xl lg:text-7xl mb-2 text-white/90 uppercase">
-                       We Are Innovators
-                    </span>
-                    <span className="block text-4xl md:text-7xl lg:text-9xl text-gold uppercase drop-shadow-2xl">
-                       We Are Shafi
-                    </span>
-                  </h1>
-                  <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed font-light tracking-wide mt-6">
-                    Pakistan's Premier <span className="text-gold font-medium">LWG Gold Rated</span> Tannery
-                  </p>
-                </div>
-
-                <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
-                  <Button variant="outline" className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase tracking-widest px-8 py-6 text-sm font-bold transition-all duration-300" asChild>
-                    <Link to="/about">
-                      About Us
-                    </Link>
-                  </Button>
-                  <Button variant="outline" className="border-white text-white hover:bg-white hover:text-black rounded-none uppercase tracking-widest px-8 py-6 text-sm font-bold transition-all duration-300" asChild>
-                    <Link to="/services">Our Work</Link>
-                  </Button>
-                </div>
+          <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+            <div className="max-w-4xl mx-auto space-y-6 animate-slide-in-up">
+              {/* Heritage Pill */}
+              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-black/60 border border-gold/40 text-gold text-xs uppercase tracking-[0.22em] font-medium backdrop-blur-md">
+                <span className="w-1.5 h-1.5 rounded-full bg-gold animate-pulse" />
+                Pakistan's Premier LWG Gold Rated Tannery • Est. 1959
               </div>
+
+              {/* High-Impact Value Proposition Headline */}
+              <h1 className="font-serif font-bold text-white tracking-tight leading-[1.08]">
+                <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl">
+                  Precision Leather.
+                </span>
+                <span className="block text-3xl sm:text-5xl md:text-6xl lg:text-7xl text-gold italic font-normal mt-1">
+                  Crafted for Global Excellence.
+                </span>
+              </h1>
+
+              {/* Subheadline targeted to International B2B Buyers */}
+              <p className="text-base sm:text-lg md:text-xl text-gray-200/90 max-w-2xl mx-auto leading-relaxed font-sans font-light">
+                Discover MST's expertise in producing premium wet blue, crust, and fully finished leather for international fashion, footwear, and leather goods industries.
+              </p>
+
+              {/* Primary & Secondary Action CTAs */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Button 
+                  size="lg" 
+                  asChild 
+                  className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-8 py-6 rounded-sm shadow-lg hover:shadow-[0_0_25px_rgba(197,160,89,0.4)] transition-all"
+                >
+                  <Link to="/fashion">Explore Our Leather</Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  asChild 
+                  className="border border-white/30 text-white hover:bg-white/10 hover:border-white rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-8 py-6 transition-all"
+                >
+                  <Link to="/contact">Contact Our Team</Link>
+                </Button>
+              </div>
+            </div>
           </div>
           
           {/* Scroll Indicator */}
-          <div className="absolute bottom-10 left-1/2 -translate-x-1/2 animate-bounce text-white/50">
-            <span className="text-[10px] uppercase tracking-widest">Scroll</span>
+          <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1.5 text-white/50 text-[10px] tracking-[0.25em] uppercase font-medium pointer-events-none">
+            <span>Scroll</span>
+            <div className="w-[1px] h-6 bg-gradient-to-b from-gold to-transparent animate-pulse" />
           </div>
         </section>
 
-        {/* Stats Section */}
-        <section className="py-20 bg-secondary border-b border-white/5 relative overflow-hidden">
-             <div className="container mx-auto px-4 lg:px-8 relative z-10">
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10">
-                     {stats.map((stat, index) => (
-                         <div key={index} className="flex flex-col items-center justify-center p-4 group">
-                             <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gold mb-2 group-hover:scale-105 transition-transform duration-300">
-                                 <Counter end={stat.value} suffix={stat.suffix} />
-                             </h3>
-                             <p className="text-white/80 uppercase tracking-widest text-sm md:text-base font-light">
-                                 {stat.label}
-                             </p>
-                         </div>
-                     ))}
-                 </div>
-             </div>
-        </section>
 
-        {/* Director's Message Section */}
-        <section className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden">
-             {/* Decorative background elements */}
-             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,rgba(184,134,11,0.05),transparent_50%)]" />
-             
-             <div className="container mx-auto px-4 lg:px-8 relative z-10">
-                 <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                     {/* Video Player Side */}
-                     <div className="w-full lg:w-1/2 group">
-                         <div className="relative rounded-none overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-black">
-                            <video 
-                                controls
-                                preload="metadata"
-                                className="w-full aspect-video object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-                                poster="/factory-hero.jpg"
-                            >
-                                <source src="/video/director-message.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                            {/* Premium frame effect */}
-                            <div className="absolute inset-0 border-[1px] border-white/5 pointer-events-none" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-                         </div>
-                     </div>
-                     
-                     {/* Text Side - Glassmorphic Container */}
-                     <div className="w-full lg:w-1/2">
-                         <div className="relative p-8 md:p-12 bg-white/[0.02] backdrop-blur-sm border border-white/5 shadow-2xl">
-                             <div className="space-y-8">
-                                 <div className="space-y-4">
-                                     <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center gap-3 font-sans">
-                                        <span className="w-12 h-[1px] bg-gold" />
-                                        Legacy
-                                     </p>
-                                    <h2 className="text-3xl md:text-6xl font-serif font-bold text-white leading-tight">
-                                        Visionary Leadership
-                                     </h2>
-                                 </div>
-                                 
-                                 <div className="relative">
-                                     <span className="absolute -top-6 -left-4 text-7xl text-gold/10 font-serif leading-none">"</span>
-                                     <blockquote className="text-2xl md:text-3xl text-gray-200 font-serif italic leading-relaxed relative z-10">
-                                        At Shafi, we don't just make leather; we create art that lasts a lifetime. Our legacy is built on the perfect balance of traditional craftsmanship and modern innovation.
-                                     </blockquote>
-                                 </div>
-                                 
-                                 <div className="pt-8 flex items-center gap-6">
-                                    <div className="w-12 h-[1px] bg-gold/50" />
-                                    <div>
-                                        <h4 className="text-xl font-sans font-bold text-white uppercase tracking-widest">Amjad Hafeez</h4>
-                                        <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mt-2 font-medium">Director MST</p>
-                                    </div>
-                                 </div>
-                             </div>
-                             
-                             {/* Decorative accent */}
-                             <div className="absolute top-0 right-0 w-24 h-24 bg-gold/5 rounded-full blur-3xl" />
-                         </div>
-                     </div>
-                 </div>
-             </div>
+        {/* =========================================================================
+            2. COMPACT COMPANY HERITAGE AND CREDIBILITY
+            ========================================================================= */}
+        <section className="py-16 md:py-20 bg-card/40 border-y border-white/10 relative overflow-hidden">
+          <div className="container mx-auto px-4 lg:px-8">
+            {/* Key Verified Performance Metrics */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10 pb-12 mb-12 border-b border-white/10">
+              {stats.map((stat, index) => (
+                <div key={index} className="flex flex-col items-center justify-center p-4 group">
+                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gold mb-2 group-hover:scale-105 transition-transform duration-300">
+                    <Counter end={stat.value} suffix={stat.suffix} />
+                  </h3>
+                  <p className="text-gray-300 uppercase tracking-[0.18em] text-xs md:text-sm font-medium">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
+            </div>
+
+            {/* Authoritative Heritage Statement */}
+            <div className="grid lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-4 space-y-2">
+                <p className="text-gold font-medium tracking-[0.25em] uppercase text-xs flex items-center gap-2">
+                  <span className="w-6 h-[1px] bg-gold" />
+                  Over Six Decades
+                </p>
+                <h2 className="text-2xl md:text-4xl font-serif font-bold text-white leading-tight">
+                  A Pioneer in Industrial Leather Craftsmanship
+                </h2>
+              </div>
+              <div className="lg:col-span-8 space-y-4 text-gray-300 text-sm md:text-base leading-relaxed">
+                <p>
+                  Founded in 1959, <span className="text-white font-medium">Muhammad Shafi Tanneries (Pvt.) Ltd</span> has spent more than 65 years perfecting the chemistry, mechanical consistency, and environmental stewardship of high-performance leather.
+                </p>
+                <p>
+                  As Pakistan's flagship <span className="text-gold font-medium">LWG Gold Rated</span> export tannery, MST combines master European tanning methods with state-of-the-art computerized drum automation, supplying Tier-1 global footwear brands, luxury fashion houses, and technical leather goods manufacturers worldwide.
+                </p>
+                <div className="pt-2">
+                  <Link 
+                    to="/about" 
+                    className="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.18em] text-gold hover:text-white transition-colors"
+                  >
+                    <span>Read Full Company Profile</span>
+                    <ArrowRight className="w-3.5 h-3.5" />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
 
 
-
-        {/* Tannery Gallery Section */}
-        <TanneryGallery />
-        
-        {/* Signature Leather Collections Gallery */}
+        {/* =========================================================================
+            3. SIGNATURE LEATHER COLLECTIONS (Editorial Material Archive)
+            ========================================================================= */}
         <BespokeGallery />
 
-        {/* About / More Info Section */}
-        <section className="py-16 md:py-20 lg:py-24 bg-background border-b border-white/5">
+
+        {/* =========================================================================
+            4. MANUFACTURING EXPERTISE (Industrial Split-Screen Stages)
+            ========================================================================= */}
+        <section className="py-16 md:py-24 bg-background relative overflow-hidden border-b border-white/5">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
-               <div className="w-full md:w-1/2">
-                   <WhoWeAreSlider />
-               </div>
-               <div className="w-full md:w-1/2 space-y-8">
-                <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center gap-3">
-                  <span className="w-8 h-[2px] bg-gold" />
-                  Who We Are
+            <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-14 gap-6">
+              <div className="space-y-3 max-w-2xl">
+                <p className="text-gold font-medium tracking-[0.25em] uppercase text-xs flex items-center gap-3">
+                  <span className="w-8 h-[1px] bg-gold" />
+                  Technical Competence
                 </p>
-                <h2 className="text-4xl lg:text-6xl font-serif font-bold text-white leading-none uppercase">
-                    More Than Just<br />A Tannery
+                <h2 className="text-3xl md:text-5xl font-serif font-bold text-white tracking-tight">
+                  Tannery <span className="text-gold italic font-normal">Processing Architecture</span>
                 </h2>
-                <div className="space-y-6 text-gray-400 text-lg leading-relaxed font-light">
-                    <p>
-                        Established over six decades ago, <span className="text-white font-medium">Muhammad Shafi Tanneries</span> has evolved into a global powerhouse. We engineer leather that meets the exacting standards of the world's most prestigious fashion houses.
-                    </p>
-                    <p>
-                        Our facility combines the artistry of traditional tanning with cutting-edge technology, ensuring every square foot is a testament to quality, sustainability, and innovation.
-                    </p>
-                </div>
-                <div className="pt-4">
-                     <Button variant="link" className="text-gold p-0 h-auto text-lg uppercase tracking-widest hover:text-white transition-colors" asChild>
-                         <Link to="/about">Read Our Full Story &rarr;</Link>
-                     </Button>
-                </div>
-               </div>
-            </div>
-          </div>
-        </section>
-
-        {/* Executive Director Section */}
-        <section className="py-16 md:py-20 lg:py-24 bg-secondary/5 relative overflow-hidden">
-             {/* Decorative background elements */}
-             <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_50%,rgba(184,134,11,0.05),transparent_50%)]" />
-             
-             <div className="container mx-auto px-4 lg:px-8 relative z-10">
-                 <div className="flex flex-col lg:flex-row items-center gap-16 lg:gap-24">
-                     {/* Video Player Side */}
-                     <div className="w-full lg:w-1/2 group">
-                         <div className="relative rounded-none overflow-hidden border border-white/10 shadow-[0_20px_50px_rgba(0,0,0,0.5)] bg-black">
-                            <video 
-                                controls
-                                preload="metadata"
-                                className="w-full aspect-video object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-700"
-                                poster="/factory-hero.jpg"
-                            >
-                                <source src="/video/executive%20director.mp4" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                            {/* Premium frame effect */}
-                            <div className="absolute inset-0 border-[1px] border-white/5 pointer-events-none" />
-                            <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent pointer-events-none" />
-                         </div>
-                     </div>
-                     
-                     {/* Text Side - Glassmorphic Container */}
-                     <div className="w-full lg:w-1/2">
-                         <div className="relative p-8 md:p-12 bg-white/[0.02] backdrop-blur-sm border border-white/5 shadow-2xl">
-                             <div className="space-y-8">
-                                 <div className="space-y-4">
-                                     <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center gap-3 font-sans">
-                                        <span className="w-12 h-[1px] bg-gold" />
-                                        Leadership
-                                     </p>
-                                     <h2 className="text-3xl md:text-6xl font-serif font-bold text-white leading-tight">
-                                        Driving Innovation
-                                     </h2>
-                                 </div>
-                                 
-                                 <div className="relative">
-                                     <span className="absolute -top-6 -left-4 text-7xl text-gold/10 font-serif leading-none">"</span>
-                                     <blockquote className="text-2xl md:text-3xl text-gray-200 font-serif italic leading-relaxed relative z-10">
-                                        Embracing modern technology while honoring our heritage defines our path forward. We are committed to sustainable excellence in every piece of leather we craft.
-                                     </blockquote>
-                                 </div>
-                                 
-                                 <div className="pt-8 flex items-center gap-6">
-                                    <div className="w-12 h-[1px] bg-gold/50" />
-                                    <div>
-                                        <h4 className="text-xl font-sans font-bold text-white uppercase tracking-widest">Haris Hafeez</h4>
-                                        <p className="text-gold/80 text-xs uppercase tracking-[0.3em] mt-2 font-medium">Executive Director</p>
-                                    </div>
-                                 </div>
-                             </div>
-                             
-                             {/* Decorative accent */}
-                             <div className="absolute top-0 left-0 w-24 h-24 bg-gold/5 rounded-full blur-3xl" />
-                         </div>
-                     </div>
-                 </div>
-             </div>
-        </section>
-
-        {/* Vision & Mission Section */}
-        <section className="py-20 bg-secondary border-b border-white/5">
-             <div className="container mx-auto px-4 lg:px-8">
-                 <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
-                     {/* Vision Card */}
-                     <div className="bg-background/50 p-10 lg:p-12 border-l-2 border-gold hover:bg-background transition-colors duration-300 group">
-                         <div className="w-12 h-12 bg-gold/10 flex items-center justify-center mb-6 rounded-none">
-                             <Globe className="w-6 h-6 text-gold" />
-                         </div>
-                         <h3 className="text-2xl font-serif font-bold text-white mb-4 uppercase tracking-wide">Our Vision</h3>
-                         <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors">
-                             "To be recognized globally as the undisputed leader in sustainable leather manufacturing, setting the benchmark for quality, ethical practices, and environmental stewardship."
-                         </p>
-                     </div>
-
-                     {/* Mission Card */}
-                     <div className="bg-background/50 p-10 lg:p-12 border-l-2 border-white hover:bg-background transition-colors duration-300 group">
-                         <div className="w-12 h-12 bg-white/10 flex items-center justify-center mb-6 rounded-none">
-                             <Award className="w-6 h-6 text-white" />
-                         </div>
-                         <h3 className="text-2xl font-serif font-bold text-white mb-4 uppercase tracking-wide">Our Mission</h3>
-                         <p className="text-gray-400 leading-relaxed text-lg group-hover:text-gray-300 transition-colors">
-                             "To produce world-class leather through continuous innovation and sustainable processes, delivering value to our customers while empowering our workforce."
-                         </p>
-                     </div>
-                 </div>
-             </div>
-        </section>
-
-        {/* Tannery Services Preview */}
-        <section className="py-16 md:py-20 lg:py-24 bg-background relative">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3">
-              <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center justify-center gap-3">
-                <span className="w-8 h-[1px] bg-gold" />
-                Tannery Operations
-                <span className="w-8 h-[1px] bg-gold" />
-              </p>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-white uppercase">
-                Hide-to-Leather Processing
-              </h2>
-            </div>
-
-            <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-px bg-white/10 border border-white/10">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-background p-10 hover:bg-secondary/50 transition-colors duration-300 group"
-                >
-                  <div className="w-12 h-12 bg-transparent flex items-center justify-start mb-6">
-                    <service.icon className="w-8 h-8 text-white group-hover:text-gold transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-lg font-serif font-bold text-white mb-3 uppercase tracking-wide group-hover:text-gold transition-colors">{service.title}</h3>
-                  <p className="text-gray-500 text-sm leading-relaxed group-hover:text-gray-400">{service.description}</p>
-                </div>
-              ))}
-            </div>
-
-            <div className="text-center mt-12 md:mt-16">
-              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-black rounded-none uppercase tracking-widest text-xs font-bold px-10 py-6" asChild>
-                <Link to="/services">
-                  View All Services
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </section>
-        
-        {/* Tanning Methods */}
-        <section className="py-16 md:py-20 lg:py-24 bg-secondary relative overflow-hidden">
-          {/* Decorative background */}
-          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[150px]" />
-          
-          <div className="container mx-auto px-4 lg:px-8 relative">
-            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3">
-              <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center justify-center gap-3">
-                <span className="w-8 h-[1px] bg-gold" />
-                Expertise
-                <span className="w-8 h-[1px] bg-gold" />
-              </p>
-              <h2 className="text-3xl md:text-5xl font-serif font-bold text-white uppercase">
-                Tanning Methods
-              </h2>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-8 md:gap-10">
-              {tanningMethods.map((method, index) => (
-                <div
-                  key={index}
-                  className="bg-transparent border border-white/10 p-8 md:p-10 hover:border-gold/50 transition-colors duration-300 group text-center"
-                >
-                  <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-8 group-hover:shadow-gold transition-all duration-500">
-                    <method.icon className="w-10 h-10 text-white group-hover:text-gold transition-colors duration-300" />
-                  </div>
-                  <h3 className="text-2xl font-serif font-bold text-white mb-4 uppercase tracking-wide group-hover:text-gold transition-colors">{method.title}</h3>
-                  <p className="text-gray-400 leading-relaxed text-sm">{method.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden border-t border-white/5">
-          {/* Premium background effects */}
-          <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40" />
-          
-          <div className="container mx-auto px-4 lg:px-8 text-center relative z-10">
-            <div className="max-w-4xl mx-auto">
-              <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base mb-6">Partner With Us</p>
-              <h2 className="text-3xl md:text-6xl lg:text-7xl font-serif font-bold mb-8 leading-none uppercase text-white">
-                Ready to Create<br />Exceptional Leather?
-              </h2>
-              <p className="text-gray-400 text-lg max-w-2xl mx-auto mb-12 font-light">
-                Whether you need wet blue, crust leather, or fully finished leather, 
-                our tannery delivers consistent quality for your production needs.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-6 justify-center">
-                <Button variant="outline" size="xl" className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase tracking-widest text-sm font-bold px-12 py-8" asChild>
-                  <Link to="/contact">Get a Quote</Link>
-                </Button>
-                <Button
-                  variant="outline"
-                  size="xl"
-                  className="border-white/20 text-white hover:bg-white hover:text-black rounded-none uppercase tracking-widest text-sm font-bold px-12 py-8"
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  Every hide progresses through rigorously controlled chemical and mechanical phases, engineered to deliver consistent caliper, grain break, and surface performance.
+                </p>
+              </div>
+              <div>
+                <Button 
+                  variant="outline" 
                   asChild
+                  className="border-white/20 text-white hover:border-gold hover:text-gold rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5"
                 >
-                  <Link to="/about">Learn About Us</Link>
+                  <Link to="/services" className="flex items-center gap-2">
+                    <span>View All Services</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
                 </Button>
+              </div>
+            </div>
+
+            {/* 4 Process Stages Grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {manufacturingStages.map((stage, idx) => (
+                <div 
+                  key={idx}
+                  className="group bg-card/60 border border-white/10 rounded-xl overflow-hidden hover:border-gold/50 transition-all duration-300 flex flex-col justify-between shadow-xl"
+                >
+                  <div className="relative aspect-[4/3] overflow-hidden bg-black">
+                    <img 
+                      src={stage.image} 
+                      alt={stage.title} 
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+                      loading="lazy"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-card via-black/30 to-transparent" />
+                    <span className="absolute top-3 left-3 px-2.5 py-1 rounded bg-black/70 backdrop-blur-md text-[10px] font-mono font-bold text-gold border border-gold/30">
+                      STAGE {stage.step}
+                    </span>
+                  </div>
+
+                  <div className="p-6 space-y-3 flex-grow flex flex-col justify-between">
+                    <div className="space-y-2">
+                      <h3 className="text-lg font-serif font-bold text-white group-hover:text-gold transition-colors">
+                        {stage.title}
+                      </h3>
+                      <p className="text-xs text-gray-300 leading-relaxed font-sans">
+                        {stage.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-4 border-t border-white/5 flex items-center justify-between text-[11px] text-gray-400">
+                      <span className="text-gold font-medium">{stage.metric}</span>
+                      <ChevronRight className="w-3.5 h-3.5 text-gray-400 group-hover:translate-x-1 transition-transform" />
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        {/* =========================================================================
+            5. QUALITY AND TECHNICAL EXCELLENCE
+            ========================================================================= */}
+        <section className="py-16 md:py-24 bg-card/30 border-b border-white/10 relative overflow-hidden">
+          {/* Subtle Ambient Light */}
+          <div className="absolute top-1/2 left-0 w-[500px] h-[500px] bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
+
+          <div className="container mx-auto px-4 lg:px-8 relative z-10">
+            <div className="grid lg:grid-cols-12 gap-12 items-center">
+              {/* Left Column: Narrative & Credibility */}
+              <div className="lg:col-span-5 space-y-6">
+                <p className="text-gold font-medium tracking-[0.25em] uppercase text-xs flex items-center gap-3">
+                  <span className="w-8 h-[1px] bg-gold" />
+                  Testing & Standards
+                </p>
+                <h2 className="text-3xl md:text-5xl font-serif font-bold text-white tracking-tight leading-tight">
+                  Stringent Quality Benchmarks for <span className="text-gold italic font-normal">Global Compliance</span>
+                </h2>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  International brands depend on Muhammad Shafi Tanneries because our quality protocols are executed in-house, audited against European consumer product directives, and verified through standardized physical and chemical laboratories.
+                </p>
+                <div className="pt-2 flex flex-col sm:flex-row gap-4">
+                  <Button 
+                    variant="outline" 
+                    asChild
+                    className="border-gold/70 text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5"
+                  >
+                    <Link to="/quality">Inspect Quality Systems</Link>
+                  </Button>
+                </div>
+              </div>
+
+              {/* Right Column: 4 Technical Pillars */}
+              <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
+                {qualityHighlights.map((pillar, idx) => {
+                  const Icon = pillar.icon;
+                  return (
+                    <div 
+                      key={idx}
+                      className="p-6 rounded-xl bg-card/70 border border-white/10 hover:border-gold/40 transition-all duration-300 space-y-3 group shadow-md"
+                    >
+                      <div className="w-10 h-10 rounded-lg bg-gold/10 border border-gold/30 flex items-center justify-center text-gold group-hover:scale-105 transition-transform">
+                        <Icon className="w-5 h-5" />
+                      </div>
+                      <h3 className="text-base font-serif font-bold text-white group-hover:text-gold transition-colors">
+                        {pillar.title}
+                      </h3>
+                      <p className="text-xs text-gray-300 leading-relaxed font-sans">
+                        {pillar.description}
+                      </p>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* =========================================================================
+            6. ENVIRONMENTAL RESPONSIBILITY
+            ========================================================================= */}
+        <section className="py-16 md:py-24 bg-background border-b border-white/5 relative overflow-hidden">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="bg-card/50 border border-white/10 rounded-2xl p-8 md:p-12 lg:p-16 relative overflow-hidden shadow-2xl">
+              <div className="grid lg:grid-cols-12 gap-10 items-center">
+                {/* Left: Plant Photo */}
+                <div className="lg:col-span-5 rounded-xl overflow-hidden border border-white/10 shadow-xl aspect-video lg:aspect-[4/3] bg-black">
+                  <img 
+                    src="/images/tannery/effluent_treatment_plant.jpg" 
+                    alt="Advanced Biological Wastewater Clarification Plant at MST" 
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Right: Verified Sustainability Architecture */}
+                <div className="lg:col-span-7 space-y-6">
+                  <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-gold/10 border border-gold/30 text-gold text-xs uppercase tracking-wider font-semibold">
+                    <Leaf className="w-3.5 h-3.5" />
+                    Environmental Responsibility
+                  </div>
+
+                  <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white leading-tight">
+                    Advanced Biological Wastewater Clarification & Circularity
+                  </h2>
+
+                  <p className="text-sm md:text-base text-gray-300 leading-relaxed">
+                    MST operates an on-site, European-engineered biological wastewater clarification plant that treats and neutralizes industrial effluent prior to discharge. Our closed-loop chrome recovery unit reclaims tanning liquors, reducing heavy metal environmental impact while preserving vital natural resources.
+                  </p>
+
+                  <div className="grid sm:grid-cols-2 gap-4 pt-2">
+                    <div className="flex items-start gap-2.5 text-xs text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                      <span>Closed-loop biological effluent clarification meeting strict NEQS and LWG limits</span>
+                    </div>
+                    <div className="flex items-start gap-2.5 text-xs text-gray-300">
+                      <CheckCircle2 className="w-4 h-4 text-gold flex-shrink-0 mt-0.5" />
+                      <span>Automated trivalent chrome liquor recovery and closed filtration circuits</span>
+                    </div>
+                  </div>
+
+                  <div className="pt-4 flex items-center gap-4">
+                    <Button 
+                      variant="outline" 
+                      asChild
+                      className="border-gold text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5 transition-all"
+                    >
+                      <Link to="/environment">Review Environmental Policy</Link>
+                    </Button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* =========================================================================
+            7. GLOBAL BUSINESS AND REPRESENTATION
+            ========================================================================= */}
+        <section className="py-16 md:py-20 bg-card/20 border-b border-white/10 relative overflow-hidden">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="grid lg:grid-cols-12 gap-8 items-center">
+              <div className="lg:col-span-7 space-y-4">
+                <p className="text-gold font-medium tracking-[0.25em] uppercase text-xs flex items-center gap-3">
+                  <span className="w-8 h-[1px] bg-gold" />
+                  International Trade Readiness
+                </p>
+                <h2 className="text-2xl sm:text-4xl font-serif font-bold text-white">
+                  Worldwide Representation & Exhibition Schedule
+                </h2>
+                <p className="text-gray-300 text-sm md:text-base leading-relaxed">
+                  Supplying leather across 120+ countries, MST maintains an active international presence at premier leather fairs including <span className="text-white font-medium">Lineapelle Milan</span> and <span className="text-white font-medium">APLF Hong Kong</span>, alongside dedicated agents in Italy, Portugal, Vietnam, China, and North America.
+                </p>
+              </div>
+
+              <div className="lg:col-span-5 flex flex-col sm:flex-row lg:justify-end gap-4">
+                <Button 
+                  variant="outline" 
+                  asChild
+                  className="border-white/20 text-white hover:border-gold hover:text-gold rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5"
+                >
+                  <Link to="/exhibition" className="flex items-center gap-2">
+                    <Calendar className="w-4 h-4" />
+                    <span>Exhibition Calendar</span>
+                  </Link>
+                </Button>
+                <Button 
+                  variant="outline" 
+                  asChild
+                  className="border-gold/60 text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5 transition-all"
+                >
+                  <Link to="/agents" className="flex items-center gap-2">
+                    <Globe className="w-4 h-4" />
+                    <span>Find Your Regional Agent</span>
+                  </Link>
+                </Button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* =========================================================================
+            8. ONE CURATED LEADERSHIP SECTION (Consolidated Executive Feature)
+            ========================================================================= */}
+        <section className="py-16 md:py-24 bg-background relative overflow-hidden border-b border-white/5">
+          <div className="container mx-auto px-4 lg:px-8">
+            <div className="text-center max-w-3xl mx-auto mb-10 space-y-3">
+              <p className="text-gold font-medium tracking-[0.25em] uppercase text-xs flex items-center justify-center gap-3">
+                <span className="w-8 h-[1px] bg-gold" />
+                Executive Leadership
+                <span className="w-8 h-[1px] bg-gold" />
+              </p>
+              <h2 className="text-3xl md:text-5xl font-serif font-bold text-white tracking-tight">
+                Stewards of Heritage & Innovation
+              </h2>
+              
+              {/* Executive Selector Switcher */}
+              <div className="inline-flex p-1 rounded-lg bg-card/80 border border-white/10 mt-4">
+                {leadershipData.map((leader) => (
+                  <button
+                    key={leader.id}
+                    onClick={() => setActiveLeader(leader)}
+                    className={`px-5 py-2 rounded-md text-xs font-semibold uppercase tracking-wider transition-all duration-300 ${
+                      activeLeader.id === leader.id
+                        ? "bg-gold text-black shadow-md"
+                        : "text-gray-400 hover:text-white"
+                    }`}
+                  >
+                    {leader.name} — {leader.title}
+                  </button>
+                ))}
+              </div>
+            </div>
+
+            {/* Curated Single Executive Showcase Frame */}
+            <div className="max-w-5xl mx-auto bg-card/60 border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
+              <div className="grid lg:grid-cols-12 gap-8 items-center p-6 md:p-10">
+                {/* Executive Video Player Side */}
+                <div className="lg:col-span-6 bg-black rounded-xl overflow-hidden border border-white/10 shadow-lg relative group">
+                  <video 
+                    controls
+                    preload="metadata"
+                    key={activeLeader.video}
+                    className="w-full aspect-video object-cover"
+                    poster={activeLeader.poster}
+                  >
+                    <source src={activeLeader.video} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                </div>
+
+                {/* Statement & Attributions */}
+                <div className="lg:col-span-6 space-y-6">
+                  <span className="text-xs uppercase tracking-[0.2em] font-medium text-gold">
+                    {activeLeader.badge}
+                  </span>
+
+                  <blockquote className="text-xl md:text-2xl font-serif italic text-white/95 leading-relaxed">
+                    "{activeLeader.quote}"
+                  </blockquote>
+
+                  <div className="pt-4 border-t border-white/10 flex items-center gap-4">
+                    <div className="w-10 h-[2px] bg-gold" />
+                    <div>
+                      <h4 className="text-base font-sans font-bold text-white uppercase tracking-wider">
+                        {activeLeader.name}
+                      </h4>
+                      <p className="text-xs text-gold font-medium tracking-wide">
+                        {activeLeader.title}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        {/* =========================================================================
+            9. PREMIUM INTERNATIONAL BUYER INQUIRY CTA
+            ========================================================================= */}
+        <section className="py-20 md:py-28 bg-gradient-to-b from-background via-card/40 to-background relative overflow-hidden">
+          {/* Subtle Background Glow */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-gold/5 rounded-full blur-[160px] pointer-events-none" />
+
+          <div className="container mx-auto px-4 lg:px-8 relative z-10 text-center">
+            <div className="max-w-3xl mx-auto space-y-6">
+              <p className="text-gold font-semibold tracking-[0.25em] uppercase text-xs">
+                International Trade & Sourcing
+              </p>
+              
+              <h2 className="text-3xl sm:text-5xl md:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
+                Partner With Pakistan's Leading Export Tannery
+              </h2>
+              
+              <p className="text-gray-300 text-sm sm:text-base md:text-lg max-w-2xl mx-auto leading-relaxed font-light">
+                Request custom strike-off swatches, inquire about volume wet blue, crust, or finished specifications, or arrange a technical consultation with our master tanners.
+              </p>
+
+              {/* Direct Inquiry CTAs connecting to verified contact architecture */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center pt-4">
+                <Button 
+                  size="lg" 
+                  asChild
+                  className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-10 py-6 rounded-sm shadow-xl hover:shadow-[0_0_25px_rgba(197,160,89,0.35)] transition-all"
+                >
+                  <Link to="/contact?subject=Trade+Inquiry">
+                    Initiate Trade Inquiry
+                  </Link>
+                </Button>
+                
+                <Button 
+                  variant="outline" 
+                  size="lg" 
+                  asChild
+                  className="border border-white/20 text-white hover:border-gold hover:text-gold rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-8 py-6 transition-all"
+                >
+                  <Link to="/services">
+                    Technical Specifications
+                  </Link>
+                </Button>
+              </div>
+
+              {/* Verified Direct Contact Credentials */}
+              <div className="pt-10 flex flex-wrap items-center justify-center gap-8 text-xs text-gray-400 border-t border-white/5 mt-8">
+                <a 
+                  href="tel:+922132561120" 
+                  className="flex items-center gap-2 hover:text-gold transition-colors"
+                >
+                  <Phone className="w-3.5 h-3.5 text-gold" />
+                  <span>+92 (21) 3256 1120</span>
+                </a>
+                <a 
+                  href="mailto:info@shafi.com" 
+                  className="flex items-center gap-2 hover:text-gold transition-colors"
+                >
+                  <Mail className="w-3.5 h-3.5 text-gold" />
+                  <span>info@shafi.com</span>
+                </a>
+                <span className="flex items-center gap-2 text-gray-400">
+                  <MapPin className="w-3.5 h-3.5 text-gold" />
+                  <span>S.I.T.E. Tannery & Lalazar Head Office, Karachi</span>
+                </span>
               </div>
             </div>
           </div>
         </section>
       </main>
+
       <Footer />
     </div>
   );

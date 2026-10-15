@@ -29,8 +29,8 @@ const galleryItems: GalleryItem[] = [
   },
   {
     src: "/images/tannery/effluent_treatment_plant.jpg",
-    title: "Zero-Discharge Effluent Treatment Plant",
-    caption: "European biological water treatment facility compliant with LWG Gold parameters.",
+    title: "Advanced Biological Wastewater Clarification Plant",
+    caption: "European-engineered biological water treatment facility compliant with rigorous environmental standards and LWG parameters.",
   },
   {
     src: "/images/tannery/tanning_drums.png",
