@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Award, Users, Drum, Globe, CheckCircle, ArrowRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEO from "@/components/common/SEO";
 
 const timeline = [
   { year: "1930", title: "Roots in Trading", description: "Elders of the present directors began trading leathers and exporting raw hides and skins." },
@@ -28,6 +29,12 @@ const certifications = [
 const AboutPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="About Us & Group Profile"
+        description="Learn about Muhammad Shafi Tanneries (Pvt.) Ltd (MST) - Flag-bearer of Shafi Group since 1959. 65+ years of excellence in leather tanning, innovation, and global export."
+        canonicalPath="/about"
+        keywords="about MST leather, Muhammad Shafi Tanneries history, Shafi Group profile, leather manufacturing heritage Karachi, LWG gold tannery history"
+      />
       <Header />
       <main>
         {/* Hero */}
@@ -45,7 +52,7 @@ const AboutPage = () => {
 
           <div className="container mx-auto px-4 lg:px-8 relative z-10">
             <div className="max-w-3xl">
-              <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
+              <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm mb-4">
                 Since 1959
               </p>
               <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6">

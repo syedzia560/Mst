@@ -15,7 +15,7 @@ const galleryItems = [
     image: "/images/tannery/effluent_treatment_plant.jpg",
     title: "Sustainability",
     subtitle: "Modern Treatment Plant",
-    link: "/social-responsibility"
+    link: "/environment"
   },
   {
     id: 5,
@@ -63,10 +63,10 @@ const galleryItems = [
 
 const TanneryGallery = () => {
   return (
-    <section className="bg-background py-20 lg:py-32 border-b border-white/5">
+    <section className="bg-background py-16 md:py-20 lg:py-24 border-b border-white/5">
       <div className="container mx-auto px-4 lg:px-8">
         {/* Header */}
-        <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
+        <div className="flex flex-col md:flex-row justify-between items-end mb-12 md:mb-14 gap-8">
           <div className="space-y-4">
              <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center gap-3">
                 <span className="w-8 h-[1px] bg-gold" />
@@ -94,7 +94,7 @@ const TanneryGallery = () => {
               
               <img 
                 src={item.image} 
-                alt={item.title}
+                alt={`Muhammad Shafi Tanneries - ${item.title} (${item.subtitle})`}
                 loading="lazy"
                 className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
               />

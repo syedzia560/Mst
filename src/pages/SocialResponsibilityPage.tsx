@@ -1,6 +1,7 @@
 import { HandHeart, GraduationCap, Building2, HeartPulse,  Users, School } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEO from "@/components/common/SEO";
 
 const initiatives = [
   {
@@ -68,6 +69,12 @@ const donatedProjects = [
 const SocialResponsibilityPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Corporate Social Responsibility (CSR) & Muhammad Shafi Trust"
+        description="Established in 1991, Muhammad Shafi Trust funds educational complexes, women's degree colleges, healthcare clinics, and academic scholarships across Pakistan."
+        canonicalPath="/social-responsibility"
+        keywords="Muhammad Shafi Trust, CSR leather industry Pakistan, Shafi educational complex, philanthropy Karachi, Shafi Group social responsibility"
+      />
       <Header />
       <main>
         {/* Hero Section */}

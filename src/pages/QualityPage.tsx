@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { CheckCircle, Shield, Leaf, Award, ArrowRight, FlaskConical, Eye, FileCheck, X, ChevronLeft, ChevronRight } from "lucide-react";
+import { CheckCircle, Shield, Leaf, Award, ArrowRight, FlaskConical, Eye, FileCheck, X, ChevronLeft, ChevronRight, ExternalLink } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEO from "@/components/common/SEO";
 
 const qualityFeatures = [
   {
@@ -70,11 +71,14 @@ const certifications = [
     name: "ISO 14001:2015",
     category: "Environmental",
     description: "Environmental management certification demonstrating our commitment to sustainability.",
+    link: "/environment",
   },
   {
     name: "Leather Working Group",
-    category: "Industry Standard",
-    description: "LWG certification for environmental compliance and best practices in leather manufacturing.",
+    category: "Industry Benchmark",
+    description: "Audited environmental benchmark for sustainable leather manufacturing and supply chain traceability.",
+    link: "https://www.leatherworkinggroup.com/",
+    isExternal: true,
   },
   {
     name: "REACH Compliant",
@@ -90,16 +94,17 @@ const certifications = [
     name: "SA8000",
     category: "Social Accountability",
     description: "Social accountability standard ensuring ethical treatment of workers and fair practices.",
+    link: "/social-responsibility",
   },
 ];
 
 const sustainability = [
-  "Water recycling systems reducing consumption by 60%",
-  "Solar power for 40% of factory energy needs",
-  "Zero-discharge effluent treatment plant",
-  "Biodegradable and eco-friendly tanning agents",
-  "Waste leather recycling programs",
-  "Sustainable sourcing from certified suppliers",
+  "Biological water treatment engineered to clarify and recycle process water",
+  "Rooftop solar photovoltaic array providing clean renewable daytime energy",
+  "Dedicated closed-loop chrome precipitation and chemical recovery systems",
+  "Biodegradable and eco-friendly tanning agents conforming to ZDHC MRSL",
+  "Solid waste and circular by-product recycling programs",
+  "Responsible sourcing from certified, traceable raw hide suppliers",
 ];
 
 // Helper component for gallery items with loading state
@@ -168,6 +173,12 @@ const QualityPage = () => {
 
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Quality Assurance, Lab Testing & Certifications"
+        description="MST adheres to rigorous international standards. Certified ISO 9001:2015, ISO 14001:2015, REACH, OEKO-TEX, and Leather Working Group (LWG) Gold rated testing laboratories."
+        canonicalPath="/quality"
+        keywords="leather quality testing, ISO 9001 leather, REACH compliant leather, LWG Gold certification, leather lab physical testing Karachi"
+      />
       <Header />
       <main>
         {/* Gallery Grid Modal Overlay */}
@@ -179,6 +190,7 @@ const QualityPage = () => {
             <button 
               className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[110]"
               onClick={closeGridModal}
+              aria-label="Close modal"
             >
               <X className="w-8 h-8" />
             </button>
@@ -189,6 +201,7 @@ const QualityPage = () => {
                 <button 
                     className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[130]"
                     onClick={closeLightbox}
+                    aria-label="Back to grid"
                 >
                     <div className="flex items-center gap-2 text-sm font-bold uppercase tracking-widest bg-white/10 px-4 py-2 rounded-full backdrop-blur-md border border-white/20">
                         <ChevronLeft className="w-4 h-4" /> Back to Grid
@@ -198,6 +211,7 @@ const QualityPage = () => {
                 <button 
                   className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-white hover:bg-white/20 transition-all pointer-events-auto"
                   onClick={prevImage}
+                  aria-label="Previous image"
                 >
                   <ChevronLeft className="w-8 h-8" />
                 </button>
@@ -205,7 +219,7 @@ const QualityPage = () => {
                 <div className="max-w-5xl max-h-[85vh] relative group" onClick={(e) => e.stopPropagation()}>
                   <img 
                     src={currentGallery[activeImageIndex]} 
-                    alt="Quality Detail" 
+                    alt={`${qualityFeatures[activeFeatureIndex].title} testing detail ${activeImageIndex + 1}`} 
                     loading="lazy"
                     decoding="async"
                     className="w-full h-full object-contain shadow-2xl rounded-lg"
@@ -218,6 +232,7 @@ const QualityPage = () => {
                 <button 
                   className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-white hover:bg-white/20 transition-all pointer-events-auto"
                   onClick={nextImage}
+                  aria-label="Next image"
                 >
                   <ChevronRight className="w-8 h-8" />
                 </button>
@@ -357,7 +372,7 @@ const QualityPage = () => {
               {certifications.map((cert, index) => (
                 <div
                   key={index}
-                  className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                  className="bg-card p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300 flex flex-col justify-between"
                 >
                   <div className="flex items-start gap-4">
                     <div className="w-12 h-12 rounded-lg bg-primary/10 flex items-center justify-center flex-shrink-0">
@@ -371,6 +386,27 @@ const QualityPage = () => {
                       <p className="text-sm text-gray-400 mt-2">{cert.description}</p>
                     </div>
                   </div>
+                  {cert.link && (
+                    <div className="mt-4 pt-3 border-t border-white/5 pl-16">
+                      {cert.isExternal ? (
+                        <a
+                          href={cert.link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-gold hover:text-white font-bold transition-colors"
+                        >
+                          Official Portal <ExternalLink className="w-3 h-3" />
+                        </a>
+                      ) : (
+                        <Link
+                          to={cert.link}
+                          className="inline-flex items-center gap-1.5 text-xs uppercase tracking-wider text-gold hover:text-white font-bold transition-colors"
+                        >
+                          View Details <ArrowRight className="w-3 h-3" />
+                        </Link>
+                      )}
+                    </div>
+                  )}
                 </div>
               ))}
             </div>
@@ -407,21 +443,21 @@ const QualityPage = () => {
               </div>
 
               <div className="grid grid-cols-2 gap-4">
-                <div className="bg-card/40 border border-primary/10 p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
-                  <p className="text-5xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">60%</p>
-                  <p className="text-sm mt-2 text-muted-foreground uppercase tracking-widest font-medium">Water Recycled</p>
+                <div className="bg-card/40 border border-primary/10 p-6 md:p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
+                  <p className="text-2xl md:text-3xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">Closed-Loop</p>
+                  <p className="text-xs mt-2 text-muted-foreground uppercase tracking-widest font-medium">Water Clarification</p>
                 </div>
-                <div className="bg-card/40 border border-primary/10 p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
-                  <p className="text-5xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">40%</p>
-                  <p className="text-sm mt-2 text-muted-foreground uppercase tracking-widest font-medium">Solar Powered</p>
+                <div className="bg-card/40 border border-primary/10 p-6 md:p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
+                  <p className="text-2xl md:text-3xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">Solar PV</p>
+                  <p className="text-xs mt-2 text-muted-foreground uppercase tracking-widest font-medium">Rooftop Generation</p>
                 </div>
-                <div className="bg-card/40 border border-primary/10 p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
-                  <p className="text-5xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">Zero</p>
-                  <p className="text-sm mt-2 text-muted-foreground uppercase tracking-widest font-medium">Discharge Waste</p>
+                <div className="bg-card/40 border border-primary/10 p-6 md:p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
+                  <p className="text-2xl md:text-3xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">SEPA / ZDHC</p>
+                  <p className="text-xs mt-2 text-muted-foreground uppercase tracking-widest font-medium">MRSL Conformance</p>
                 </div>
-                <div className="bg-card/40 border border-primary/10 p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
-                  <p className="text-5xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">100%</p>
-                  <p className="text-sm mt-2 text-muted-foreground uppercase tracking-widest font-medium">Traceable</p>
+                <div className="bg-card/40 border border-primary/10 p-6 md:p-8 rounded-xl text-center group hover:bg-card/60 transition-all">
+                  <p className="text-2xl md:text-3xl font-serif font-bold text-gold group-hover:scale-105 transition-transform">Traceable</p>
+                  <p className="text-xs mt-2 text-muted-foreground uppercase tracking-widest font-medium">Supply Chain Provenance</p>
                 </div>
               </div>
             </div>
@@ -429,7 +465,7 @@ const QualityPage = () => {
         </section>
 
         {/* CTA */}
-        <section className="py-24 bg-background">
+        <section className="py-16 md:py-20 lg:py-24 bg-background">
           <div className="container mx-auto px-4 lg:px-8 text-center">
             <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
               Quality You Can Trust

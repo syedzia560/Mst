@@ -7,11 +7,12 @@ import TanneryGallery from "@/components/home/TanneryGallery";
 import BespokeGallery from "@/components/home/BespokeGallery";
 import WhoWeAreSlider from "@/components/home/WhoWeAreSlider";
 
+import SEO from "@/components/common/SEO";
 import Counter from "@/components/ui/Counter";
 
 const stats = [
-  { value: 120, suffix: "+", label: "Countries" },
-  { value: 15, suffix: " Million", label: "Sq. Feet Annual Production" },
+  { value: 120, suffix: "+", label: "Countries Served" },
+  { value: 25, suffix: "+ Million", label: "Sq. Feet Annual Production" },
   { value: 25584, suffix: "", label: "Sq. Meter Production Area" },
 ];
 
@@ -59,6 +60,12 @@ const tanningMethods = [
 const HomePage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="LWG Gold Rated Leather Tannery & Exporter"
+        description="Muhammad Shafi Tanneries (Pvt.) Ltd (MST) is Pakistan's premier LWG Gold Rated tannery. Producing over 25M sq. ft of wet blue, crust, and finished leather annually for global fashion houses."
+        canonicalPath="/"
+        keywords="leather tannery Pakistan, LWG Gold tannery, wet blue leather, crust leather, finished leather, Karachi leather manufacturer, Shafi Group, MST leather"
+      />
       <Header />
       <main>
         {/* Hero Section */}
@@ -71,19 +78,25 @@ const HomePage = () => {
               loop 
               muted 
               playsInline
-              preload="auto"
-              className="w-full h-full object-cover"
+              preload="metadata"
+              className="w-full h-full object-cover motion-reduce:hidden"
               poster="/factory-hero.jpg"
             >
               <source src="/video/background.mp4" type="video/mp4" />
               Your browser does not support the video tag.
             </video>
+            <img 
+              src="/factory-hero.jpg" 
+              alt="Muhammad Shafi Tanneries Production Facility" 
+              className="hidden motion-reduce:block w-full h-full object-cover"
+              loading="eager"
+            />
             {/* Darker, cinematic overlay */}
             <div className="absolute inset-0 bg-black/60" />
             <div className="absolute inset-0 bg-gradient-to-t from-background via-transparent to-black/40" />
             
             {/* Subtle animated particles/glows - kept minimal */}
-            <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse opacity-20" />
+            <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/10 rounded-full blur-[120px] animate-pulse opacity-20 pointer-events-none" />
           </div>
           
           <div className="container mx-auto px-4 lg:px-8 relative z-10 pt-20">
@@ -145,7 +158,7 @@ const HomePage = () => {
         </section>
 
         {/* Director's Message Section */}
-        <section className="py-32 bg-background relative overflow-hidden">
+        <section className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden">
              {/* Decorative background elements */}
              <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_50%,rgba(184,134,11,0.05),transparent_50%)]" />
              
@@ -212,11 +225,11 @@ const HomePage = () => {
         {/* Tannery Gallery Section */}
         <TanneryGallery />
         
-        {/* Bespoke Concepts Gallery */}
+        {/* Signature Leather Collections Gallery */}
         <BespokeGallery />
 
         {/* About / More Info Section */}
-        <section className="py-24 bg-background border-b border-white/5">
+        <section className="py-16 md:py-20 lg:py-24 bg-background border-b border-white/5">
           <div className="container mx-auto px-4 lg:px-8">
             <div className="flex flex-col md:flex-row items-center gap-12 lg:gap-20">
                <div className="w-full md:w-1/2">
@@ -248,9 +261,8 @@ const HomePage = () => {
           </div>
         </section>
 
-        {/* Vision & Mission Section */}
         {/* Executive Director Section */}
-        <section className="py-32 bg-secondary/5 relative overflow-hidden">
+        <section className="py-16 md:py-20 lg:py-24 bg-secondary/5 relative overflow-hidden">
              {/* Decorative background elements */}
              <div className="absolute top-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_50%,rgba(184,134,11,0.05),transparent_50%)]" />
              
@@ -342,9 +354,9 @@ const HomePage = () => {
         </section>
 
         {/* Tannery Services Preview */}
-        <section className="py-32 bg-background relative">
+        <section className="py-16 md:py-20 lg:py-24 bg-background relative">
           <div className="container mx-auto px-4 lg:px-8">
-            <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3">
               <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center justify-center gap-3">
                 <span className="w-8 h-[1px] bg-gold" />
                 Tannery Operations
@@ -370,7 +382,7 @@ const HomePage = () => {
               ))}
             </div>
 
-            <div className="text-center mt-16">
+            <div className="text-center mt-12 md:mt-16">
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-black rounded-none uppercase tracking-widest text-xs font-bold px-10 py-6" asChild>
                 <Link to="/services">
                   View All Services
@@ -381,12 +393,12 @@ const HomePage = () => {
         </section>
         
         {/* Tanning Methods */}
-        <section className="py-32 bg-secondary relative overflow-hidden">
+        <section className="py-16 md:py-20 lg:py-24 bg-secondary relative overflow-hidden">
           {/* Decorative background */}
           <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-gold/5 rounded-full blur-[150px]" />
           
           <div className="container mx-auto px-4 lg:px-8 relative">
-            <div className="text-center max-w-3xl mx-auto mb-20 space-y-4">
+            <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16 space-y-3">
               <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center justify-center gap-3">
                 <span className="w-8 h-[1px] bg-gold" />
                 Expertise
@@ -397,11 +409,11 @@ const HomePage = () => {
               </h2>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-10">
+            <div className="grid md:grid-cols-3 gap-8 md:gap-10">
               {tanningMethods.map((method, index) => (
                 <div
                   key={index}
-                  className="bg-transparent border border-white/10 p-10 hover:border-gold/50 transition-colors duration-300 group text-center"
+                  className="bg-transparent border border-white/10 p-8 md:p-10 hover:border-gold/50 transition-colors duration-300 group text-center"
                 >
                   <div className="w-20 h-20 rounded-full bg-white/5 flex items-center justify-center mx-auto mb-8 group-hover:shadow-gold transition-all duration-500">
                     <method.icon className="w-10 h-10 text-white group-hover:text-gold transition-colors duration-300" />
@@ -415,8 +427,7 @@ const HomePage = () => {
         </section>
 
         {/* CTA Section */}
-        {/* CTA Section */}
-        <section className="py-32 bg-background relative overflow-hidden border-t border-white/5">
+        <section className="py-16 md:py-20 lg:py-24 bg-background relative overflow-hidden border-t border-white/5">
           {/* Premium background effects */}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent via-black/20 to-black/40" />
           

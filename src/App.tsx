@@ -4,8 +4,16 @@ import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { HelmetProvider } from "react-helmet-async";
 import ScrollToTop from "./components/layout/ScrollToTop";
 import ScrollToHash from "./components/layout/ScrollToHash";
+import { usePageTracking } from "./lib/analytics";
+
+// Analytics tracker component to safely record SPA page transitions
+const AnalyticsTracker = () => {
+  usePageTracking();
+  return null;
+};
 
 // Lazy load pages
 const HomePage = lazy(() => import("./pages/HomePage"));
@@ -32,37 +40,40 @@ const LoadingFallback = () => (
 );
 
 const App = () => (
-  <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollToTop />
-      <BrowserRouter>
-        <ScrollToHash />
-        <Suspense fallback={<LoadingFallback />}>
-          <Routes>
-            <Route path="/" element={<HomePage />} />
-            <Route path="/about" element={<AboutPage />} />
-            <Route path="/services" element={<ServicesPage />} />
-            <Route path="/quality" element={<QualityPage />} />
-            <Route path="/contact" element={<ContactPage />} />
-            
-            {/* New Pages */}
-            <Route path="/fashion" element={<LeatherFashionPage />} />
-            <Route path="/innovation" element={<InnovationPage />} />
-            <Route path="/environment" element={<EnvironmentPage />} />
-            <Route path="/gallery" element={<GalleryPage />} />
-            <Route path="/exhibition" element={<ExhibitionPage />} />
-            <Route path="/agents" element={<AgentsPage />} />
-            <Route path="/social-responsibility" element={<SocialResponsibilityPage />} />
-            <Route path="/careers" element={<CareersPage />} />
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <ScrollToTop />
+        <BrowserRouter>
+          <AnalyticsTracker />
+          <ScrollToHash />
+          <Suspense fallback={<LoadingFallback />}>
+            <Routes>
+              <Route path="/" element={<HomePage />} />
+              <Route path="/about" element={<AboutPage />} />
+              <Route path="/services" element={<ServicesPage />} />
+              <Route path="/quality" element={<QualityPage />} />
+              <Route path="/contact" element={<ContactPage />} />
+              
+              {/* New Pages */}
+              <Route path="/fashion" element={<LeatherFashionPage />} />
+              <Route path="/innovation" element={<InnovationPage />} />
+              <Route path="/environment" element={<EnvironmentPage />} />
+              <Route path="/gallery" element={<GalleryPage />} />
+              <Route path="/exhibition" element={<ExhibitionPage />} />
+              <Route path="/agents" element={<AgentsPage />} />
+              <Route path="/social-responsibility" element={<SocialResponsibilityPage />} />
+              <Route path="/careers" element={<CareersPage />} />
 
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </Suspense>
-      </BrowserRouter>
-    </TooltipProvider>
-  </QueryClientProvider>
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </Suspense>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
 
 export default App;

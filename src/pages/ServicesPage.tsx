@@ -3,6 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Droplets, Drum, Paintbrush, Scissors, Beaker, Shield, Truck, Cog } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
+import SEO from "@/components/common/SEO";
 
 const tanningServices = [
   {
@@ -117,6 +118,12 @@ const rawMaterials = [
 const ServicesPage = () => {
   return (
     <div className="min-h-screen bg-background">
+      <SEO
+        title="Tannery Services & Hide-to-Leather Processing"
+        description="Comprehensive industrial leather tanning services: Beam house operations, chrome & vegetable tanning, re-tanning, wet blue & crust leather export, and mechanical finishing."
+        canonicalPath="/services"
+        keywords="leather tanning services, beam house operations, wet blue export, crust leather production, vegetable tanning Pakistan, leather finishing Karachi"
+      />
       <Header />
       <main>
         {/* Hero */}

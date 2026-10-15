@@ -36,7 +36,9 @@ const Footer = () => {
           {/* Brand */}
           <div className="space-y-6">
             <div className="flex items-center gap-3">
-              <img src={logo} alt="Shafi Tannery" loading="lazy" className="h-10 w-auto rounded-sm brightness-110" />
+              <div className="p-1 rounded-sm bg-white/[0.95] ring-1 ring-gold/40 flex items-center justify-center">
+                <img src={logo} alt="Shafi Tannery" loading="lazy" className="h-9 w-auto object-contain" />
+              </div>
               <div>
                  <span className="text-2xl font-serif font-bold tracking-[0.2em] uppercase text-white leading-none">Shafi</span>
                 <p className="text-[10px] text-gray-500 tracking-[0.3em] uppercase">Your Leather Specialist</p>
@@ -52,7 +54,9 @@ const Footer = () => {
                   key={index}
                   href={social.href}
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-none border border-white/20 flex items-center justify-center hover:bg-gold hover:border-gold hover:text-black transition-all duration-300"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-10 h-10 rounded-none border border-white/20 flex items-center justify-center text-gray-400 hover:bg-gold hover:border-gold hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold transition-all duration-300"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -68,7 +72,7 @@ const Footer = () => {
                 <li key={index}>
                   <Link
                     to={link.href}
-                    className="text-gray-400 hover:text-white hover:translate-x-1 transition-all duration-300 text-sm inline-block"
+                    className="text-gray-400 hover:text-gold hover:translate-x-1 focus-visible:text-gold focus-visible:outline-none transition-all duration-300 text-sm inline-block"
                   >
                     {link.label}
                   </Link>
@@ -93,13 +97,52 @@ const Footer = () => {
           <div>
             <h4 className="font-sans font-bold text-sm uppercase tracking-widest mb-6 text-gold">Contact</h4>
             <div className="space-y-4 text-sm text-gray-400 font-light">
-              <p>Shafi House, 35-A/3, Lalazar,<br />Opp. Beach Luxury Hotel, P.O. Box 4524,<br />Karachi-74000, Pakistan.</p>
-              <p>Factory: D-196-A, Haroonabad<br />S.I.T.E area Sindh 75700</p>
-              <p>Coordinates: 24.89123491481986, 66.99899929149421</p>
-              <p className="hover:text-white transition-colors cursor-pointer">Phone: (92-21) 35610696-8-9</p>
-              <div className="space-y-1">
-                <p className="hover:text-gold transition-colors cursor-pointer">headoffice@shafi.com</p>
-                <p className="hover:text-gold transition-colors cursor-pointer text-gold decoration-gold/30">sales.mst@shafi.com</p>
+              <div>
+                <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Head Office</p>
+                <a 
+                  href="https://maps.google.com/?q=Shafi+House+35-A%2F3+Lalazar+Karachi" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gold focus-visible:text-gold focus-visible:outline-none transition-colors block leading-relaxed"
+                  title="Open Head Office in Google Maps"
+                >
+                  Shafi House, 35-A/3, Lalazar,<br />Opp. Beach Luxury Hotel, P.O. Box 4524,<br />Karachi-74000, Pakistan.
+                </a>
+              </div>
+              <div>
+                <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Manufacturing Facility</p>
+                <a 
+                  href="https://www.google.com/maps/search/?api=1&query=24.89123491481986,66.99899929149421" 
+                  target="_blank" 
+                  rel="noopener noreferrer"
+                  className="hover:text-gold focus-visible:text-gold focus-visible:outline-none transition-colors block leading-relaxed"
+                  title="Open Factory in Google Maps"
+                >
+                  Factory: D-196-A, Haroonabad<br />S.I.T.E Area, Karachi, Sindh 75700
+                </a>
+              </div>
+              <p>
+                Phone:{" "}
+                <a 
+                  href="tel:+922135610696" 
+                  className="hover:text-gold focus-visible:text-gold focus-visible:outline-none transition-colors"
+                >
+                  (92-21) 35610696-8-9
+                </a>
+              </p>
+              <div className="space-y-1 pt-1">
+                <a 
+                  href="mailto:headoffice@shafi.com" 
+                  className="hover:text-gold focus-visible:text-gold focus-visible:outline-none transition-colors block"
+                >
+                  headoffice@shafi.com
+                </a>
+                <a 
+                  href="mailto:sales.mst@shafi.com" 
+                  className="text-gold hover:text-white focus-visible:text-white focus-visible:outline-none transition-colors block font-medium"
+                >
+                  sales.mst@shafi.com
+                </a>
               </div>
             </div>
           </div>
@@ -110,13 +153,16 @@ const Footer = () => {
           <p className="text-gray-600 text-xs uppercase tracking-wider">
             © {currentYear} Shafi Tannery. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs text-gray-600 uppercase tracking-wider">
-            <a href="#" className="hover:text-white transition-colors duration-300">
-              Privacy Policy
-            </a>
-            <a href="#" className="hover:text-white transition-colors duration-300">
-              Terms of Service
-            </a>
+          <div className="flex gap-6 text-xs text-gray-500 uppercase tracking-wider">
+            <Link to="/contact" className="hover:text-gold focus-visible:text-gold transition-colors duration-300">
+              Inquiries
+            </Link>
+            <Link to="/quality" className="hover:text-gold focus-visible:text-gold transition-colors duration-300">
+              Certifications
+            </Link>
+            <Link to="/environment" className="hover:text-gold focus-visible:text-gold transition-colors duration-300">
+              Sustainability
+            </Link>
           </div>
         </div>
       </div>

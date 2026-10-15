@@ -22,3 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Archived raw media
+_archive_media/*
+!_archive_media/README.md

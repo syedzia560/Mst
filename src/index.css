@@ -6,8 +6,8 @@
 @tailwind utilities;
 
 @layer base {
-   :root {
-    /* Defaulting to a Dark Premium Theme to match dada.com.pk */
+  :root {
+    /* Muhammad Shafi Tanneries (MST) - Signature Dark Luxury Industrial Theme */
     --background: 220 15% 10%; /* Very dark blue/black background */
     --foreground: 40 20% 97%;   /* Off-white text */
 

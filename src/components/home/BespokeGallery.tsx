@@ -6,80 +6,80 @@ const bespokeItems = [
   {
     id: 1,
     image: "/images/bespoke/product1.jpg",
-    title: "Vibrant Textures",
-    subtitle: "Custom Finishes",
+    title: "Vibrant Aniline",
+    subtitle: "Nappa Lambskin",
     link: "/services"
   },
   {
     id: 2,
     image: "/images/bespoke/product2.jpg",
-    title: "Exotic Grains",
-    subtitle: "Premium Selection",
+    title: "Mill-Grained",
+    subtitle: "Full Grain Leather",
     link: "/services"
   },
   {
     id: 3,
     image: "/images/bespoke/product3.jpg",
-    title: "Rich Tones",
-    subtitle: "Color Mastery",
+    title: "Drum-Dyed Crust",
+    subtitle: "Rich Tonal Depth",
     link: "/services"
   },
   {
     id: 4,
     image: "/images/bespoke/product4.jpg",
-    title: "Soft Touch",
-    subtitle: "Garment Leather",
+    title: "Soft Nappa Glove",
+    subtitle: "Garment & Glove Leather",
     link: "/services"
   },
    {
     id: 5,
     image: "/images/bespoke/product5.jpg",
-    title: "Metallic Series",
-    subtitle: "Modern Aesthetics",
+    title: "Metallic Foil",
+    subtitle: "Contemporary Lustre",
     link: "/services"
   },
   {
     id: 6,
     image: "/images/bespoke/product6.jpg",
-    title: "Patent Leather",
-    subtitle: "High Gloss",
+    title: "Glazed Patent",
+    subtitle: "High-Gloss Calfskin",
     link: "/services"
   },
   {
     id: 7,
     image: "/images/bespoke/product7.jpg",
-    title: "Embossed Designs",
-    subtitle: "Geometric Patterns",
+    title: "Precision Embossed",
+    subtitle: "Geometric Micro-Grain",
     link: "/services"
   },
   {
     id: 8,
     image: "/images/bespoke/product8.jpg",
-    title: "Classic Nappa",
-    subtitle: "Timeless Quality",
+    title: "Classic Smooth Nappa",
+    subtitle: "Shoe Upper & Leather Goods",
     link: "/services"
   }
 ];
 
 const BespokeGallery = () => {
   return (
-    <section className="bg-background py-20 lg:py-32 border-b border-white/5 relative overflow-hidden">
+    <section className="bg-background py-16 md:py-20 lg:py-24 border-b border-white/5 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="container mx-auto px-4 lg:px-8 relative z-10">
         {/* Header */}
-        <div className="text-center max-w-4xl mx-auto mb-20 space-y-6">
+        <div className="text-center max-w-4xl mx-auto mb-12 md:mb-16 space-y-4">
           <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm md:text-base flex items-center justify-center gap-3">
              <span className="w-8 h-[1px] bg-gold" />
              Exclusive Collection
              <span className="w-8 h-[1px] bg-gold" />
            </p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-sans font-bold text-white uppercase leading-none">
-            Bespoke <span className="text-gold">Concepts</span>
+            Signature <span className="text-gold">Leather Collections</span>
           </h2>
-          <p className="text-gray-400 font-light leading-relaxed text-lg max-w-2xl mx-auto">
-             A showcase of our versatility in color, texture, and finish. From bold metallics to classic grains, we engineer softness and durability into every square foot.
+          <p className="text-gray-400 font-light leading-relaxed text-base md:text-lg max-w-2xl mx-auto">
+             A showcase of MST's versatility in custom tanning, precision drum-dyeing, and specialized finishes. From subtle metallics to smooth shoe-upper nappa, we engineer unmatched softness and tensile strength into every hide.
           </p>
         </div>
 
@@ -95,7 +95,7 @@ const BespokeGallery = () => {
               
               <img 
                 src={item.image} 
-                alt={item.title}
+                alt={`MST Signature Leather - ${item.title} (${item.subtitle})`}
                 className="w-full h-full object-cover transition-all duration-700 ease-out group-hover:scale-110"
                 loading="lazy"
               />
@@ -120,10 +120,10 @@ const BespokeGallery = () => {
         </div>
         
         {/* Bottom Action */}
-        <div className="mt-16 text-center">
+        <div className="mt-12 md:mt-16 text-center">
             <Button variant="outline" className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase tracking-widest px-10 py-6 text-sm font-bold transition-all duration-300" asChild>
-                <Link to="/services">
-                    Explore Full Catalog
+                <Link to="/fashion">
+                    Explore Full Fashion Catalog
                 </Link>
             </Button>
         </div>
