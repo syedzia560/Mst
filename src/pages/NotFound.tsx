@@ -27,7 +27,7 @@ const NotFound = () => {
           <div className="pt-4 flex flex-col sm:flex-row gap-4 justify-center">
             <Button
               variant="outline"
-              className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase tracking-widest text-xs font-bold px-6 py-5"
+              className="border border-gold text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5"
               asChild
             >
               <Link to="/" className="flex items-center gap-2">
@@ -36,7 +36,7 @@ const NotFound = () => {
             </Button>
             <Button
               variant="outline"
-              className="border-white/20 text-white hover:bg-white hover:text-black rounded-none uppercase tracking-widest text-xs font-bold px-6 py-5"
+              className="border border-white/20 text-white hover:border-gold hover:text-gold rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5"
               asChild
             >
               <Link to="/contact" className="flex items-center gap-2">

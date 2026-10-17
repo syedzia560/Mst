@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import { Image as ImageIcon, X, ChevronLeft, ChevronRight } from "lucide-react";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
@@ -67,6 +67,7 @@ const galleryItems: GalleryItem[] = [
 const GalleryGrid = () => {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const touchStartX = useRef<number | null>(null);
 
   const openLightbox = (index: number) => {
     setCurrentIndex(index);
@@ -88,6 +89,25 @@ const GalleryGrid = () => {
     e?.stopPropagation();
     setCurrentIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
   }, []);
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX;
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX.current - touchEndX;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        nextImage();
+      } else {
+        prevImage();
+      }
+    }
+    touchStartX.current = null;
+  };
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -117,8 +137,17 @@ const GalleryGrid = () => {
         {galleryItems.map((item, index) => (
           <div
             key={index}
+            role="button"
+            tabIndex={0}
+            aria-label={`View photo: ${item.title}`}
             onClick={() => openLightbox(index)}
-            className="group relative aspect-square overflow-hidden bg-black/60 border border-white/10 cursor-pointer shadow-lg hover:border-gold/50 transition-all duration-300"
+            onKeyDown={(e) => {
+              if (e.key === "Enter" || e.key === " ") {
+                e.preventDefault();
+                openLightbox(index);
+              }
+            }}
+            className="group relative aspect-square overflow-hidden bg-black/60 border border-white/10 rounded-sm cursor-pointer shadow-lg hover:border-gold/50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold transition-all duration-300"
           >
             <img
               src={item.src}
@@ -138,16 +167,22 @@ const GalleryGrid = () => {
         ))}
       </div>
 
-      {/* Lightbox Modal */}
+      {/* Lightbox Modal with Touch Swipe & Keyboard Navigation */}
       {lightboxOpen && (
         <div
+          role="dialog"
+          aria-modal="true"
+          aria-label="Image gallery lightbox"
           className="fixed inset-0 z-[100] flex items-center justify-center bg-black/95 backdrop-blur-md p-4 animate-in fade-in duration-200"
           onClick={closeLightbox}
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
         >
           <Button
             variant="ghost"
             size="icon"
-            className="absolute top-6 right-6 text-white hover:bg-white/10 z-50 rounded-none w-10 h-10 border border-white/20"
+            aria-label="Close dialog"
+            className="absolute top-6 right-6 text-white hover:bg-white/10 z-50 rounded-sm w-10 h-10 border border-white/20 focus-visible:ring-1 focus-visible:ring-gold"
             onClick={closeLightbox}
           >
             <X className="w-6 h-6" />
@@ -156,7 +191,8 @@ const GalleryGrid = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-50 rounded-none w-12 h-12 border border-white/20 hidden md:flex"
+            aria-label="Previous image"
+            className="absolute left-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-50 rounded-sm w-12 h-12 border border-white/20 hidden md:flex focus-visible:ring-1 focus-visible:ring-gold"
             onClick={prevImage}
           >
             <ChevronLeft className="w-8 h-8" />
@@ -169,7 +205,7 @@ const GalleryGrid = () => {
             <img
               src={galleryItems[currentIndex].src}
               alt={galleryItems[currentIndex].title}
-              className="max-w-full max-h-[70vh] object-contain shadow-2xl border border-white/10"
+              className="max-w-full max-h-[70vh] object-contain shadow-2xl border border-white/10 rounded-sm"
             />
             <div className="mt-4 text-center max-w-xl space-y-1">
               <h4 className="text-lg font-serif font-bold text-white">
@@ -187,7 +223,8 @@ const GalleryGrid = () => {
           <Button
             variant="ghost"
             size="icon"
-            className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-50 rounded-none w-12 h-12 border border-white/20 hidden md:flex"
+            aria-label="Next image"
+            className="absolute right-6 top-1/2 -translate-y-1/2 text-white hover:bg-white/10 z-50 rounded-sm w-12 h-12 border border-white/20 hidden md:flex focus-visible:ring-1 focus-visible:ring-gold"
             onClick={nextImage}
           >
             <ChevronRight className="w-8 h-8" />
@@ -221,7 +258,7 @@ const GalleryPage = () => {
           </div>
           <div className="container px-4 relative z-10 max-w-3xl">
             <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm mb-4">Inside Our Tannery</p>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Facility Gallery</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 tracking-tight">Facility Gallery</h1>
             <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
               Explore the scale, technology, and environmental systems powering Pakistan’s premier light-leather tannery.
             </p>

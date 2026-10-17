@@ -113,8 +113,17 @@ const GalleryImage = ({ src, alt, onClick }: { src: string; alt: string; onClick
   
   return (
     <div 
-      className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 hover:border-gold/30 transition-all duration-500 cursor-pointer bg-white/[0.02]"
+      role="button"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "Enter" || e.key === " ") {
+          e.preventDefault();
+          onClick();
+        }
+      }}
+      className="group relative aspect-[4/3] overflow-hidden rounded-xl border border-white/10 hover:border-gold/40 transition-all duration-500 cursor-pointer bg-white/[0.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold"
       onClick={onClick}
+      aria-label={`View enlarged ${alt}`}
     >
       {/* Skeleton / Shimmer */}
       {!isLoaded && (
@@ -145,6 +154,7 @@ const GalleryImage = ({ src, alt, onClick }: { src: string; alt: string; onClick
 const QualityPage = () => {
   const [activeFeatureIndex, setActiveFeatureIndex] = useState<number | null>(null);
   const [activeImageIndex, setActiveImageIndex] = useState<number | null>(null);
+  const [touchStartX, setTouchStartX] = useState<number | null>(null);
 
   const openGridModal = (index: number) => setActiveFeatureIndex(index);
   const closeGridModal = () => {
@@ -159,16 +169,31 @@ const QualityPage = () => {
 
   const currentGallery = activeFeatureIndex !== null ? qualityFeatures[activeFeatureIndex].gallery : [];
 
-  const nextImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const nextImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (activeImageIndex === null) return;
     setActiveImageIndex((activeImageIndex + 1) % currentGallery.length);
   };
 
-  const prevImage = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  const prevImage = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
     if (activeImageIndex === null) return;
     setActiveImageIndex((activeImageIndex - 1 + currentGallery.length) % currentGallery.length);
+  };
+
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStartX(e.touches[0].clientX);
+  };
+
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX === null) return;
+    const touchEndX = e.changedTouches[0].clientX;
+    const diff = touchStartX - touchEndX;
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) nextImage();
+      else prevImage();
+    }
+    setTouchStartX(null);
   };
 
   return (
@@ -197,9 +222,13 @@ const QualityPage = () => {
 
             {/* Lightbox Stage */}
             {activeImageIndex !== null ? (
-              <div className="fixed inset-0 z-[120] bg-black flex items-center justify-center p-4 animate-in zoom-in-95 duration-300">
+              <div 
+                className="fixed inset-0 z-[120] bg-black flex items-center justify-center p-4 animate-in zoom-in-95 duration-300"
+                onTouchStart={handleTouchStart}
+                onTouchEnd={handleTouchEnd}
+              >
                 <button 
-                    className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[130]"
+                    className="absolute top-8 right-8 text-white/50 hover:text-white transition-colors z-[130] cursor-pointer"
                     onClick={closeLightbox}
                     aria-label="Back to grid"
                 >
@@ -209,19 +238,20 @@ const QualityPage = () => {
                 </button>
                 
                 <button 
-                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-white hover:bg-white/20 transition-all pointer-events-auto"
+                  className="absolute left-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-white hover:bg-white/20 transition-all pointer-events-auto cursor-pointer"
                   onClick={prevImage}
                   aria-label="Previous image"
                 >
                   <ChevronLeft className="w-8 h-8" />
                 </button>
                 
-                <div className="max-w-5xl max-h-[85vh] relative group" onClick={(e) => e.stopPropagation()}>
+                <div className="max-w-5xl max-h-[85vh] relative group select-none" onClick={(e) => e.stopPropagation()}>
                   <img 
                     src={currentGallery[activeImageIndex]} 
                     alt={`${qualityFeatures[activeFeatureIndex].title} testing detail ${activeImageIndex + 1}`} 
                     loading="lazy"
                     decoding="async"
+                    draggable={false}
                     className="w-full h-full object-contain shadow-2xl rounded-lg"
                   />
                   <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 bg-black/50 backdrop-blur-md rounded-full text-white/80 text-sm">
@@ -230,7 +260,7 @@ const QualityPage = () => {
                 </div>
                 
                 <button 
-                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-white hover:bg-white/20 transition-all pointer-events-auto"
+                  className="absolute right-4 top-1/2 -translate-y-1/2 w-12 h-12 flex items-center justify-center bg-white/5 rounded-full text-white hover:bg-white/20 transition-all pointer-events-auto cursor-pointer"
                   onClick={nextImage}
                   aria-label="Next image"
                 >
@@ -245,7 +275,7 @@ const QualityPage = () => {
               >
                 <div className="mb-12 text-center">
                     <p className="text-gold font-bold tracking-[0.3em] uppercase text-xs mb-3">Facility Tour</p>
-                    <h2 className="text-3xl md:text-5xl font-sans font-bold text-white uppercase">
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-white uppercase tracking-tight">
                         {qualityFeatures[activeFeatureIndex].title} <span className="text-gold">Gallery</span>
                     </h2>
                 </div>
@@ -286,7 +316,7 @@ const QualityPage = () => {
               <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
                 Quality Assurance
               </p>
-              <h1 className="text-4xl md:text-5xl font-serif font-bold text-white mb-6">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 tracking-tight">
                 Tannery Quality Standards
               </h1>
               <p className="text-lg text-gray-200 leading-relaxed">
@@ -313,15 +343,25 @@ const QualityPage = () => {
               {qualityFeatures.map((feature, index) => (
                 <div
                   key={index}
+                  role="button"
+                  tabIndex={0}
+                  onKeyDown={(e) => {
+                    if (e.key === "Enter" || e.key === " ") {
+                      e.preventDefault();
+                      openGridModal(index);
+                    }
+                  }}
                   onClick={() => openGridModal(index)}
-                  className={`relative group bg-card rounded-2xl overflow-hidden shadow-lg h-[400px] cursor-pointer transition-all duration-500 hover:shadow-gold/10 hover:shadow-2xl hover:-translate-y-2`}
+                  aria-label={`Open ${feature.title} gallery tour`}
+                  className="relative group bg-card rounded-2xl overflow-hidden shadow-lg h-[400px] cursor-pointer transition-all duration-500 hover:shadow-gold/10 hover:shadow-2xl hover:-translate-y-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-background"
                 >
                   {/* Background Image */}
-                  <div className="absolute inset-0 z-0">
+                  <div className="absolute inset-0 z-0 pointer-events-none select-none">
                     <img 
                       src={feature.coverImage} 
                       alt={feature.title} 
                       loading="lazy"
+                      draggable={false}
                       className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                     />
                     {/* Gradient Overlay */}
@@ -329,12 +369,12 @@ const QualityPage = () => {
                   </div>
 
                   {/* Content */}
-                  <div className="relative z-10 h-full p-8 flex flex-col justify-end">
+                  <div className="relative z-10 h-full p-8 flex flex-col justify-end pointer-events-none">
                     <div className="w-14 h-14 rounded-full bg-primary/20 backdrop-blur-md flex items-center justify-center mb-6 border border-white/10 group-hover:bg-primary group-hover:border-primary transition-all duration-300">
                       <feature.icon className="w-7 h-7 text-primary group-hover:text-primary-foreground transition-colors duration-300" />
                     </div>
                     
-                    <h3 className="text-xl md:text-2xl font-sans font-bold text-white uppercase tracking-wider mb-3 leading-tight">
+                    <h3 className="text-xl md:text-2xl font-serif font-bold text-white uppercase tracking-wider mb-3 leading-tight">
                       {feature.title}
                     </h3>
                     
@@ -360,10 +400,10 @@ const QualityPage = () => {
               <p className="text-secondary font-medium tracking-widest uppercase text-sm mb-4">
                 Certifications
               </p>
-              <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-4">
+              <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-4">
                 Internationally Certified
               </h2>
-              <p className="text-muted-foreground">
+              <p className="text-gray-300">
                 Our certifications demonstrate our commitment to quality, safety, and sustainability
               </p>
             </div>
@@ -382,7 +422,7 @@ const QualityPage = () => {
                       <span className="text-xs text-gold font-medium uppercase tracking-[0.2em] font-sans">
                         {cert.category}
                       </span>
-                      <h3 className="font-sans font-bold text-white uppercase tracking-wider mt-1">{cert.name}</h3>
+                      <h3 className="font-serif font-bold text-white uppercase tracking-wider mt-1">{cert.name}</h3>
                       <p className="text-sm text-gray-400 mt-2">{cert.description}</p>
                     </div>
                   </div>
@@ -467,21 +507,21 @@ const QualityPage = () => {
         {/* CTA */}
         <section className="py-16 md:py-20 lg:py-24 bg-background">
           <div className="container mx-auto px-4 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground mb-6">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-white mb-6">
               Quality You Can Trust
             </h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto mb-8">
+            <p className="text-gray-300 max-w-2xl mx-auto mb-8">
               Partner with a manufacturer that prioritizes quality at every step. 
               Request samples to experience our leather firsthand.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Button variant="default" size="xl" asChild>
+              <Button size="lg" className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-5 sm:px-8 py-4 sm:py-6 rounded-sm shadow-xl max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center" asChild>
                 <Link to="/contact">
                   Request Samples
-                  <ArrowRight className="w-5 h-5 ml-2" />
+                  <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
                 </Link>
               </Button>
-              <Button variant="outline" size="xl" asChild>
+              <Button variant="outline" size="lg" className="border border-white/30 text-white hover:bg-white/10 hover:border-white rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-5 sm:px-8 py-4 sm:py-6 max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center" asChild>
                 <Link to="/services">View Our Services</Link>
               </Button>
             </div>

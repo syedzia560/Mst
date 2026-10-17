@@ -130,11 +130,11 @@ const BespokeGallery = () => {
             <Button 
               variant="outline" 
               asChild
-              className="border-gold/60 text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-6 py-5 transition-all"
+              className="border-gold/60 text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-5 sm:px-6 py-4 sm:py-5 transition-all max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center"
             >
               <Link to="/fashion" className="flex items-center gap-2">
                 <span>View Full Catalog</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </Link>
             </Button>
           </div>
@@ -233,7 +233,6 @@ const BespokeGallery = () => {
                     type="button"
                     onClick={() => setActiveItem(item)}
                     aria-pressed={isSelected}
-                    aria-label={`Select article ${item.id}: ${item.title} (${item.subtitle})`}
                     className={`w-full text-left p-3 rounded-lg border transition-all duration-300 flex flex-col justify-between group relative overflow-hidden cursor-pointer select-none active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
                       isSelected 
                         ? "bg-card border-gold shadow-[0_0_15px_rgba(197,160,89,0.25)] ring-1 ring-gold" 
@@ -263,7 +262,7 @@ const BespokeGallery = () => {
                         <h4 className={`text-xs font-semibold uppercase tracking-wider truncate ${isSelected ? "text-gold" : "text-white group-hover:text-gold"}`}>
                           {item.title}
                         </h4>
-                        <span className="text-[10px] text-gray-500 font-mono">#{item.id.toString().padStart(2, "0")}</span>
+                        <span className="text-[10px] text-gray-400 font-mono">#{item.id.toString().padStart(2, "0")}</span>
                       </div>
                       <p className="text-[10px] text-gray-400 truncate">
                         {item.subtitle}

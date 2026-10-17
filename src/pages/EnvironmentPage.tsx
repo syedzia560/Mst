@@ -86,7 +86,7 @@ const EnvironmentPage = () => {
             <p className="text-gold font-bold tracking-[0.3em] uppercase text-xs md:text-sm">
               LWG Gold Standard
             </p>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight">
               Environmental Stewardship
             </h1>
             <p className="text-base md:text-lg text-gray-300 font-light leading-relaxed">
@@ -329,7 +329,7 @@ const EnvironmentPage = () => {
               </div>
 
               {/* Inquire CTA */}
-              <div className="p-8 md:p-12 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/10 text-center space-y-6">
+              <div className="p-6 sm:p-8 md:p-12 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/10 rounded-sm text-center space-y-6">
                 <h3 className="text-2xl md:text-4xl font-serif font-bold text-white">
                   Need Full Sustainability & Compliance Dossiers?
                 </h3>
@@ -340,11 +340,11 @@ const EnvironmentPage = () => {
                 <div>
                   <Button
                     variant="outline"
-                    className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase tracking-widest text-xs font-bold px-8 py-6"
+                    className="border border-gold text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-4 sm:px-8 py-4 sm:py-6 max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center"
                     asChild
                   >
                     <Link to="/contact?inquiryType=compliance">
-                      Request Compliance Documentation <ArrowRight className="w-4 h-4 ml-2" />
+                      Request Compliance Documentation <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
                     </Link>
                   </Button>
                 </div>

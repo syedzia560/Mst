@@ -113,7 +113,7 @@ const AgentsPage = () => {
           </div>
           <div className="container px-4 relative z-10">
             <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm mb-4">International Presence</p>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Our Global Agents</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 tracking-tight">Our Global Agents</h1>
             <p className="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto font-light">
               Local expertise, global reach. Reach our dedicated representatives across Europe, the Americas, and Asia.
             </p>
@@ -138,7 +138,7 @@ const AgentsPage = () => {
                 {agents.map((agent, index) => (
                   <div
                     key={index}
-                    className="bg-white/[0.02] p-8 border border-white/10 shadow-xl backdrop-blur-sm hover:border-gold/50 transition-all duration-300 group flex flex-col justify-between"
+                    className="bg-white/[0.02] p-8 border border-white/10 rounded-sm shadow-xl backdrop-blur-sm hover:border-gold/50 transition-all duration-300 group flex flex-col justify-between"
                   >
                     <div>
                       {/* Flag and Country Header */}
@@ -147,7 +147,7 @@ const AgentsPage = () => {
                           src={`https://flagcdn.com/w80/${agent.flagCode}.png`} 
                           alt={`${agent.country} flag`} 
                           loading="lazy" 
-                          className="h-6 w-auto rounded-none shadow" 
+                          className="h-6 w-auto rounded-sm shadow" 
                         />
                         <div>
                           <p className="text-xs uppercase tracking-widest text-gold font-bold">{agent.country}</p>
@@ -197,7 +197,7 @@ const AgentsPage = () => {
               </div>
 
               {/* Head Office Callout */}
-              <div className="p-8 md:p-12 bg-white/[0.02] border border-gold/30 text-center space-y-4">
+              <div className="p-6 sm:p-8 md:p-12 bg-white/[0.02] border border-gold/30 rounded-sm text-center space-y-4">
                 <Globe className="w-8 h-8 text-gold mx-auto" />
                 <h3 className="text-2xl font-serif font-bold text-white">Don't See Your Region Listed?</h3>
                 <p className="text-gray-400 max-w-2xl mx-auto font-light">
@@ -206,7 +206,7 @@ const AgentsPage = () => {
                 <div className="pt-4">
                   <a 
                     href="mailto:sales.mst@shafi.com"
-                    className="inline-block border border-gold text-gold hover:bg-gold hover:text-black font-bold uppercase tracking-widest text-xs px-8 py-4 transition-all duration-300"
+                    className="inline-flex items-center justify-center border border-gold text-gold hover:bg-gold hover:text-black font-semibold uppercase tracking-[0.16em] text-xs px-4 sm:px-8 py-3.5 sm:py-4 rounded-sm transition-all duration-300 max-w-full text-center whitespace-normal sm:whitespace-nowrap break-words"
                   >
                     Contact Head Office (sales.mst@shafi.com)
                   </a>

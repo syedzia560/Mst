@@ -63,7 +63,7 @@ const Header = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex items-center justify-between h-20 md:h-22">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-3.5 group" aria-label="Muhammad Shafi Tanneries Home">
+          <Link to="/" className="flex items-center gap-3.5 group">
             <div className="relative flex items-center justify-center p-2 rounded-lg bg-gradient-to-b from-white via-white to-neutral-100 shadow-[0_4px_20px_rgba(0,0,0,0.45)] ring-1 ring-gold/40 transition-all duration-300 group-hover:ring-gold group-hover:shadow-[0_4px_25px_rgba(197,160,89,0.3)] flex-shrink-0">
               <img 
                 src={logo} 
@@ -87,27 +87,33 @@ const Header = () => {
             <NavigationMenu>
               <NavigationMenuList className="gap-1">
                 <NavigationMenuItem>
-                  <Link to="/">
-                    <NavigationMenuLink className={cn(
-                      navigationMenuTriggerStyle(), 
-                      "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2", 
-                      location.pathname === "/" && "text-gold font-semibold"
-                    )}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      to="/"
+                      className={cn(
+                        navigationMenuTriggerStyle(), 
+                        "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2", 
+                        location.pathname === "/" && "text-gold font-semibold"
+                      )}
+                    >
                       Home
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link to="/services">
-                    <NavigationMenuLink className={cn(
-                      navigationMenuTriggerStyle(), 
-                      "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2", 
-                      location.pathname === "/services" && "text-gold font-semibold"
-                    )}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      to="/services"
+                      className={cn(
+                        navigationMenuTriggerStyle(), 
+                        "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2", 
+                        location.pathname === "/services" && "text-gold font-semibold"
+                      )}
+                    >
                       Services
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
@@ -157,15 +163,18 @@ const Header = () => {
                 </NavigationMenuItem>
 
                 <NavigationMenuItem>
-                  <Link to="/agents">
-                    <NavigationMenuLink className={cn(
-                      navigationMenuTriggerStyle(), 
-                      "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2",
-                      location.pathname === "/agents" && "text-gold font-semibold"
-                    )}>
+                  <NavigationMenuLink asChild>
+                    <Link
+                      to="/agents"
+                      className={cn(
+                        navigationMenuTriggerStyle(), 
+                        "bg-transparent text-white/90 hover:bg-white/5 hover:text-gold uppercase tracking-[0.14em] text-[13px] font-medium transition-colors px-3 py-2",
+                        location.pathname === "/agents" && "text-gold font-semibold"
+                      )}
+                    >
                       Agents
-                    </NavigationMenuLink>
-                  </Link>
+                    </Link>
+                  </NavigationMenuLink>
                 </NavigationMenuItem>
               </NavigationMenuList>
             </NavigationMenu>

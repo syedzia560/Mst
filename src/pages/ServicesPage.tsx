@@ -174,7 +174,7 @@ const ServicesPage = () => {
                 <Drum className="w-3.5 h-3.5" />
                 Industrial Tanning Services
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight tracking-tight">
                 Raw Hide to<br/>
                 <span className="text-gold italic font-normal">Finished Leather</span>
               </h1>
@@ -226,9 +226,9 @@ const ServicesPage = () => {
               <p className="text-gray-300 text-sm md:text-base">Every stage of leather production under expert control from a single facility</p>
             </div>
 
-            <div className="grid lg:grid-cols-12 gap-6 max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-12 gap-6 max-w-7xl mx-auto overflow-hidden">
               {/* Sidebar tabs */}
-              <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0">
+              <div className="lg:col-span-4 flex flex-row lg:flex-col gap-2 overflow-x-auto lg:overflow-visible pb-2 lg:pb-0 max-w-full">
                 {tanningServices.map((service, index) => {
                   const Icon = service.icon;
                   return (
@@ -433,11 +433,11 @@ const ServicesPage = () => {
             <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-8">
               Tell us your specifications — leather type, weight, temper, finish, and quantity. Our experienced technical team will advise on the best process path and deliver exactly what you need.
             </p>
-            <Button size="lg" className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-10 py-6 rounded-sm shadow-xl" asChild>
-              <Link to="/contact" className="flex items-center gap-2">
-                <Scissors className="w-4 h-4" />
-                Get a Custom Quote
-                <ArrowRight className="w-4 h-4" />
+            <Button size="lg" className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-5 sm:px-10 py-4 sm:py-6 rounded-sm shadow-xl max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center" asChild>
+              <Link to="/contact" className="flex items-center justify-center flex-wrap gap-2">
+                <Scissors className="w-4 h-4 shrink-0" />
+                <span>Get a Custom Quote</span>
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </Link>
             </Button>
           </div>

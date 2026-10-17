@@ -5,22 +5,22 @@ import logo from "@/assets/logo.png";
 const Footer = () => {
   const currentYear = new Date().getFullYear();
 
-  const quickLinks = [
-    { href: "/", label: "Home" },
+  const companyLinks = [
     { href: "/about", label: "About Us" },
-    { href: "/services", label: "Services" },
-    { href: "/quality", label: "Quality" },
-    { href: "/contact", label: "Contact" },
-    { href: "/careers", label: "Careers"},
-    
+    { href: "/quality", label: "Quality & Certifications" },
+    { href: "/environment", label: "Sustainability & Environment" },
+    { href: "/social-responsibility", label: "Social Responsibility" },
+    { href: "/careers", label: "Careers" },
+    { href: "/contact", label: "Contact Us" },
   ];
 
-  const services = [
-    "Beam House Operations",
-    "Chrome & Vegetable Tanning",
-    "Wet Blue & Crust Leather",
-    "Finishing & Dyeing",
-    "Global Export",
+  const showcaseLinks = [
+    { href: "/services", label: "Tannery Services" },
+    { href: "/fashion", label: "Leather & Fashion" },
+    { href: "/innovation", label: "Innovation & R&D" },
+    { href: "/gallery", label: "Media & Facility Gallery" },
+    { href: "/exhibition", label: "Global Exhibitions" },
+    { href: "/agents", label: "Worldwide Agents" },
   ];
 
   const socialLinks = [
@@ -41,7 +41,7 @@ const Footer = () => {
               </div>
               <div>
                  <span className="text-2xl font-serif font-bold tracking-[0.2em] uppercase text-white leading-none">Shafi</span>
-                <p className="text-[10px] text-gray-500 tracking-[0.3em] uppercase">Your Leather Specialist</p>
+                <p className="text-[10px] text-gray-400 tracking-[0.3em] uppercase">Your Leather Specialist</p>
               </div>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed font-light">
@@ -56,7 +56,7 @@ const Footer = () => {
                   aria-label={social.label}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-none border border-white/20 flex items-center justify-center text-gray-400 hover:bg-gold hover:border-gold hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold transition-all duration-300"
+                  className="w-10 h-10 rounded-sm border border-white/20 flex items-center justify-center text-gray-400 hover:bg-gold hover:border-gold hover:text-black focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-gold transition-all duration-300"
                 >
                   <social.icon className="w-4 h-4" />
                 </a>
@@ -64,11 +64,11 @@ const Footer = () => {
             </div>
           </div>
 
-          {/* Quick Links */}
+          {/* Company & Governance */}
           <div>
-            <h4 className="font-sans font-bold text-sm uppercase tracking-widest mb-6 text-gold">Quick Links</h4>
-            <ul className="space-y-4">
-              {quickLinks.map((link, index) => (
+            <h3 className="font-sans font-bold text-xs uppercase tracking-[0.2em] mb-6 text-gold">Company & Standards</h3>
+            <ul className="space-y-3">
+              {companyLinks.map((link, index) => (
                 <li key={index}>
                   <Link
                     to={link.href}
@@ -81,13 +81,18 @@ const Footer = () => {
             </ul>
           </div>
 
-          {/* Services */}
+          {/* Sourcing & Showcase */}
           <div>
-            <h4 className="font-sans font-bold text-sm uppercase tracking-widest mb-6 text-gold">Our Services</h4>
-            <ul className="space-y-4">
-              {services.map((service, index) => (
+            <h3 className="font-sans font-bold text-xs uppercase tracking-[0.2em] mb-6 text-gold">Showcase & Trade</h3>
+            <ul className="space-y-3">
+              {showcaseLinks.map((link, index) => (
                 <li key={index}>
-                  <span className="text-gray-400 text-sm font-light">{service}</span>
+                  <Link
+                    to={link.href}
+                    className="text-gray-400 hover:text-gold hover:translate-x-1 focus-visible:text-gold focus-visible:outline-none transition-all duration-300 text-sm inline-block"
+                  >
+                    {link.label}
+                  </Link>
                 </li>
               ))}
             </ul>
@@ -95,10 +100,10 @@ const Footer = () => {
 
           {/* Contact */}
           <div>
-            <h4 className="font-sans font-bold text-sm uppercase tracking-widest mb-6 text-gold">Contact</h4>
+            <h3 className="font-sans font-bold text-sm uppercase tracking-widest mb-6 text-gold">Contact</h3>
             <div className="space-y-4 text-sm text-gray-400 font-light">
               <div>
-                <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Head Office</p>
+                <p className="text-xs uppercase tracking-wider text-gray-400 mb-1">Head Office</p>
                 <a 
                   href="https://maps.google.com/?q=Shafi+House+35-A%2F3+Lalazar+Karachi" 
                   target="_blank" 
@@ -110,7 +115,7 @@ const Footer = () => {
                 </a>
               </div>
               <div>
-                <p className="text-xs uppercase tracking-wider text-gray-500 mb-1">Manufacturing Facility</p>
+                <p className="text-xs uppercase tracking-wider text-gray-400 mb-1">Manufacturing Facility</p>
                 <a 
                   href="https://www.google.com/maps/search/?api=1&query=24.89123491481986,66.99899929149421" 
                   target="_blank" 
@@ -150,10 +155,10 @@ const Footer = () => {
 
         {/* Bottom Bar */}
         <div className="border-t border-white/10 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-gray-600 text-xs uppercase tracking-wider">
+          <p className="text-gray-400 text-xs uppercase tracking-wider">
             © {currentYear} Shafi Tannery. All rights reserved.
           </p>
-          <div className="flex gap-6 text-xs text-gray-500 uppercase tracking-wider">
+          <div className="flex gap-6 text-xs text-gray-400 uppercase tracking-wider">
             <Link to="/contact" className="hover:text-gold focus-visible:text-gold transition-colors duration-300">
               Inquiries
             </Link>

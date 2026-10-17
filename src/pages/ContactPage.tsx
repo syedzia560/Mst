@@ -260,7 +260,7 @@ const ContactPage = () => {
               <p className="text-gold font-bold tracking-[0.3em] uppercase text-xs md:text-sm flex items-center gap-2">
                 <span className="w-8 h-[1px] bg-gold" /> Global Sourcing Desk
               </p>
-              <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight leading-tight">
                 Connect with Our <span className="text-gold">Export Team</span>
               </h1>
               <p className="text-base md:text-lg text-gray-300 font-light leading-relaxed">
@@ -279,7 +279,7 @@ const ContactPage = () => {
               {contactCards.map((card, idx) => (
                 <div
                   key={idx}
-                  className="bg-white/[0.02] border border-white/10 p-6 rounded-none backdrop-blur-sm space-y-3 hover:border-gold/40 transition-colors"
+                  className="bg-white/[0.02] border border-white/10 p-6 rounded-sm backdrop-blur-sm space-y-3 hover:border-gold/40 transition-colors"
                 >
                   <div className="w-10 h-10 rounded-sm bg-gold/10 ring-1 ring-gold/30 flex items-center justify-center">
                     <card.icon className="w-5 h-5 text-gold" />
@@ -348,7 +348,7 @@ const ContactPage = () => {
                     <Button
                       onClick={handleReset}
                       variant="outline"
-                      className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase text-xs tracking-widest font-bold px-6 py-4"
+                      className="border border-gold text-gold hover:bg-gold hover:text-black rounded-sm uppercase text-xs tracking-[0.16em] font-semibold px-6 py-4"
                     >
                       <RotateCcw className="w-4 h-4 mr-2" /> Submit Another Inquiry
                     </Button>
@@ -357,7 +357,7 @@ const ContactPage = () => {
 
                 {/* State: Error */}
                 {status === "error" && (
-                  <div className="p-6 mb-6 bg-red-950/40 border border-red-500/50 space-y-4 text-left animate-fade-in">
+                  <div className="p-6 mb-6 bg-red-950/40 border border-red-500/50 rounded-sm space-y-4 text-left animate-fade-in">
                     <div className="flex items-start gap-3">
                       <AlertCircle className="w-6 h-6 text-red-400 flex-shrink-0 mt-0.5" />
                       <div>
@@ -374,7 +374,7 @@ const ContactPage = () => {
                         onClick={() => setStatus("idle")}
                         size="sm"
                         variant="outline"
-                        className="border-red-400 text-red-300 hover:bg-red-900/50 rounded-none text-xs"
+                        className="border-red-400 text-red-300 hover:bg-red-900/50 rounded-sm text-xs"
                       >
                         Try Again
                       </Button>
@@ -382,7 +382,7 @@ const ContactPage = () => {
                         href={`mailto:sales.mst@shafi.com?subject=Export Inquiry from ${encodeURIComponent(formData.company || formData.name)}&body=${encodeURIComponent(
                           `Name: ${formData.name}\nCompany: ${formData.company}\nCountry: ${formData.country}\nRequirement: ${formData.leatherType}\n\nDetails:\n${formData.message}`
                         )}`}
-                        className="inline-flex items-center gap-1.5 px-4 py-2 bg-gold text-black hover:bg-white text-xs font-bold uppercase tracking-wider transition-colors"
+                        className="inline-flex items-center gap-1.5 px-5 py-2.5 bg-gold text-black hover:bg-gold/90 text-xs font-semibold uppercase tracking-[0.16em] rounded-sm transition-colors"
                       >
                         Email Directly via Mail Client <ExternalLink className="w-3 h-3" />
                       </a>
@@ -509,7 +509,7 @@ const ContactPage = () => {
                     <Button
                       type="submit"
                       disabled={status === "submitting"}
-                      className="w-full bg-gold text-black hover:bg-white rounded-none uppercase tracking-widest text-sm font-bold py-6 transition-all duration-300 shadow-lg"
+                      className="w-full bg-gold text-black hover:bg-gold/90 rounded-sm uppercase tracking-[0.16em] text-xs font-semibold py-6 transition-all duration-300 shadow-lg"
                     >
                       {status === "submitting" ? (
                         <span className="flex items-center gap-2">

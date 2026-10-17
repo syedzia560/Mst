@@ -140,7 +140,7 @@ const ExhibitionPage = () => {
             <p className="text-gold font-bold tracking-[0.3em] uppercase text-xs md:text-sm">
               Global Trade Events
             </p>
-            <h1 className="text-3xl md:text-5xl lg:text-6xl font-serif font-bold text-white">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight">
               International Exhibitions
             </h1>
             <p className="text-base md:text-lg text-gray-300 font-light leading-relaxed">
@@ -170,11 +170,11 @@ const ExhibitionPage = () => {
                 </p>
 
                 {/* Filter Tabs */}
-                <div className="inline-flex p-1 bg-white/5 border border-white/10 rounded-none">
+                <div className="inline-flex p-1 bg-white/5 border border-white/10 rounded-sm">
                   <button
                     type="button"
                     onClick={() => setActiveTab("upcoming")}
-                    className={`flex items-center gap-2 px-6 py-3 text-xs uppercase tracking-wider font-bold transition-all ${
+                    className={`flex items-center gap-2 px-6 py-3 text-xs uppercase tracking-wider font-semibold rounded-sm transition-all ${
                       activeTab === "upcoming"
                         ? "bg-gold text-black shadow-md"
                         : "text-gray-400 hover:text-white"
@@ -185,7 +185,7 @@ const ExhibitionPage = () => {
                   <button
                     type="button"
                     onClick={() => setActiveTab("past")}
-                    className={`flex items-center gap-2 px-6 py-3 text-xs uppercase tracking-wider font-bold transition-all ${
+                    className={`flex items-center gap-2 px-6 py-3 text-xs uppercase tracking-wider font-semibold rounded-sm transition-all ${
                       activeTab === "past"
                         ? "bg-gold text-black shadow-md"
                         : "text-gray-400 hover:text-white"
@@ -201,11 +201,11 @@ const ExhibitionPage = () => {
                 {filteredExhibitions.map((expo) => (
                   <div
                     key={expo.id}
-                    className="bg-white/[0.02] p-8 border border-white/10 shadow-2xl backdrop-blur-sm hover:border-gold/50 transition-all duration-300 group flex flex-col justify-between"
+                    className="bg-white/[0.02] p-8 border border-white/10 rounded-sm shadow-2xl backdrop-blur-sm hover:border-gold/50 transition-all duration-300 group flex flex-col justify-between"
                   >
                     <div>
                       {/* Logo Box */}
-                      <div className="h-28 mb-6 rounded-none bg-white/[0.04] border border-white/5 flex items-center justify-center p-6 group-hover:bg-white/[0.07] transition-colors">
+                      <div className="h-28 mb-6 rounded-sm bg-white/[0.04] border border-white/5 flex items-center justify-center p-6 group-hover:bg-white/[0.07] transition-colors">
                         <img
                           src={expo.logo}
                           alt={`${expo.name} official trade logo`}
@@ -250,7 +250,7 @@ const ExhibitionPage = () => {
                         to={`/contact?inquiryType=exhibition&event=${encodeURIComponent(
                           expo.name + " (" + expo.city + ")"
                         )}`}
-                        className="w-full inline-flex items-center justify-center gap-2 py-3 bg-white/5 hover:bg-gold hover:text-black border border-white/10 hover:border-gold text-xs uppercase font-bold tracking-wider text-gold transition-all duration-300"
+                        className="w-full inline-flex items-center justify-center gap-2 py-3 bg-white/5 hover:bg-gold hover:text-black border border-white/10 hover:border-gold text-xs uppercase font-semibold tracking-[0.16em] text-gold rounded-sm transition-all duration-300"
                       >
                         {expo.ctaText} <ArrowRight className="w-3.5 h-3.5" />
                       </Link>
@@ -260,7 +260,7 @@ const ExhibitionPage = () => {
               </div>
 
               {/* Archival Photography & Sourcing Note */}
-              <div className="p-6 md:p-8 bg-black/40 border border-white/10 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="p-6 md:p-8 bg-black/40 border border-white/10 rounded-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                 <div className="space-y-1">
                   <h4 className="text-white font-serif font-bold text-base">
                     Exhibition Documentation & Photography Notice
@@ -273,14 +273,14 @@ const ExhibitionPage = () => {
                 </div>
                 <Link
                   to="/contact?inquiryType=exhibition"
-                  className="px-5 py-2.5 bg-gold text-black hover:bg-white text-xs uppercase font-bold tracking-wider transition-colors flex-shrink-0"
+                  className="px-6 py-3 bg-gold text-black hover:bg-gold/90 text-xs uppercase font-semibold tracking-[0.16em] rounded-sm transition-colors flex-shrink-0"
                 >
                   Contact Trade Desk
                 </Link>
               </div>
 
               {/* Direct Booking CTA Banner */}
-              <div className="p-8 md:p-12 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/10 text-center space-y-6">
+              <div className="p-6 sm:p-8 md:p-12 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/10 rounded-sm text-center space-y-6">
                 <h3 className="text-2xl md:text-3xl font-serif font-bold text-white">
                   Planning to Attend Any Upcoming International Shows?
                 </h3>
@@ -291,11 +291,11 @@ const ExhibitionPage = () => {
                 <div>
                   <Button
                     variant="outline"
-                    className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase tracking-widest text-xs font-bold px-8 py-6"
+                    className="border border-gold text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-4 sm:px-8 py-4 sm:py-6 max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center"
                     asChild
                   >
                     <Link to="/contact?inquiryType=exhibition">
-                      Request Pre-Show Appointment <ArrowRight className="w-4 h-4 ml-2" />
+                      Request Pre-Show Appointment <ArrowRight className="w-4 h-4 ml-2 shrink-0" />
                     </Link>
                   </Button>
                 </div>

@@ -79,7 +79,7 @@ const InnovationPage = () => {
           </div>
           <div className="container px-4 relative z-10 max-w-4xl">
             <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm mb-4">Pioneering The Future</p>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">Innovation in Leather</h1>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 tracking-tight">Innovation in Leather</h1>
             <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
               At Shafi, innovation is not merely about machinery—it is the harmonious fusion of generational artisanship, European design trends, and state-of-the-art chemical engineering.
             </p>
@@ -177,7 +177,7 @@ const InnovationPage = () => {
               </div>
 
               {/* Collaborative CTA */}
-              <div className="p-10 md:p-14 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/10 text-center space-y-6">
+              <div className="p-6 sm:p-10 md:p-14 bg-gradient-to-r from-white/[0.03] to-white/[0.01] border border-white/10 rounded-sm text-center space-y-6">
                 <h3 className="text-2xl md:text-4xl font-serif font-bold text-white">
                   Have a Custom Finish or Article in Mind?
                 </h3>
@@ -187,7 +187,7 @@ const InnovationPage = () => {
                 <div>
                   <Button 
                     variant="outline" 
-                    className="border-gold text-gold hover:bg-gold hover:text-black rounded-none uppercase tracking-widest text-xs font-bold px-8 py-6"
+                    className="border border-gold text-gold hover:bg-gold hover:text-black rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-4 sm:px-8 py-4 sm:py-6 max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center"
                     asChild
                   >
                     <Link to="/contact">Request Custom Formulation</Link>

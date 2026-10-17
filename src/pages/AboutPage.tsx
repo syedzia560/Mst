@@ -114,7 +114,7 @@ const AboutPage = () => {
                 <Calendar className="w-3.5 h-3.5" />
                 Est. 1959 · Shafi Group
               </div>
-              <h1 className="text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-6xl lg:text-7xl font-serif font-bold text-white leading-tight tracking-tight">
                 Six Decades of<br/>
                 <span className="text-gold italic font-normal">Industrial Leather Mastery</span>
               </h1>
@@ -122,10 +122,10 @@ const AboutPage = () => {
                 Muhammad Shafi Tanneries (Pvt.) Ltd — Pakistan's premier LWG Gold Rated export tannery, producing over 25 million square feet of precision leather annually for the world's most demanding brands.
               </p>
               <div className="flex flex-col sm:flex-row gap-4 pt-2">
-                <Button size="lg" className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-8 py-6 rounded-sm" asChild>
+                <Button size="lg" className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-5 sm:px-8 py-4 sm:py-6 rounded-sm max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center" asChild>
                   <Link to="/contact">Trade Inquiry</Link>
                 </Button>
-                <Button variant="outline" size="lg" className="border border-white/30 text-white hover:bg-white/10 rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-8 py-6" asChild>
+                <Button variant="outline" size="lg" className="border border-white/30 text-white hover:bg-white/10 rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-5 sm:px-8 py-4 sm:py-6 max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center" asChild>
                   <Link to="/services">Our Services</Link>
                 </Button>
               </div>
@@ -440,10 +440,10 @@ const AboutPage = () => {
             <p className="text-gray-300 text-sm md:text-base leading-relaxed mb-8">
               We welcome prospective international partners, procurement teams, and brand representatives to visit our facilities and see our tanning operations firsthand.
             </p>
-            <Button size="lg" className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-10 py-6 rounded-sm shadow-xl" asChild>
+            <Button size="lg" className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-6 sm:px-10 py-4 sm:py-6 rounded-sm shadow-xl max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center" asChild>
               <Link to="/contact" className="flex items-center gap-2">
                 <span>Arrange a Visit</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-4 h-4 shrink-0" />
               </Link>
             </Button>
           </div>

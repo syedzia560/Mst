@@ -130,7 +130,7 @@ const CareersPage = () => {
             <p className="text-gold font-bold tracking-[0.3em] uppercase text-sm mb-4">
               Join Our Legacy
             </p>
-            <h1 className="text-4xl md:text-6xl font-serif font-bold text-white mb-6">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white mb-6 tracking-tight">
               Careers at Shafi
             </h1>
             <p className="text-lg md:text-xl text-gray-300 font-light leading-relaxed">
@@ -339,7 +339,7 @@ const CareersPage = () => {
                   <Button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full sm:w-auto border border-gold bg-gold text-black hover:bg-white hover:text-black hover:border-white rounded-none uppercase tracking-widest text-xs font-bold px-10 py-6 transition-all duration-300"
+                    className="w-full sm:w-auto bg-gold text-black hover:bg-gold/90 rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-10 py-6 transition-all duration-300 shadow-lg"
                   >
                     {isSubmitting ? "Submitting Application..." : "Submit Application"}
                   </Button>

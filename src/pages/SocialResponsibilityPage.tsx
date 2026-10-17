@@ -107,7 +107,7 @@ const SocialResponsibilityPage = () => {
                 Philanthropy
                 <span className="w-12 h-px bg-gold" />
               </p>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-white tracking-tight">
                 Social Responsibility
               </h1>
               <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto font-serif italic">
@@ -135,8 +135,8 @@ const SocialResponsibilityPage = () => {
                             <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mb-6 text-primary">
                                 <item.icon className="w-6 h-6" />
                             </div>
-                            <h3 className="font-serif font-bold text-xl mb-3 text-foreground">{item.title}</h3>
-                            <p className="text-muted-foreground text-sm leading-relaxed">{item.description}</p>
+                            <h3 className="font-serif font-bold text-xl mb-3 text-white">{item.title}</h3>
+                            <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>
                         </div>
                     ))}
                 </div>
@@ -148,9 +148,9 @@ const SocialResponsibilityPage = () => {
              <div className="container mx-auto px-4 lg:px-8">
                 <div className="text-center mb-16 space-y-4 max-w-3xl mx-auto">
                     <p className="text-gold font-medium tracking-[0.25em] uppercase text-xs">Direct Trust Endowments</p>
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground">Projects Under Trust Supervision</h2>
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-white">Projects Under Trust Supervision</h2>
                     <div className="w-16 h-[2px] bg-gold mx-auto" />
-                    <p className="text-muted-foreground text-base leading-relaxed">
+                    <p className="text-gray-300 text-base leading-relaxed">
                         Institutions established, funded, and managed under the direct stewardship of the Muhammad Shafi Trust (Est. 1991).
                     </p>
                 </div>
@@ -185,8 +185,8 @@ const SocialResponsibilityPage = () => {
                                                 Supervised Operation
                                             </span>
                                         </div>
-                                        <h3 className="text-2xl md:text-3xl font-serif font-bold text-foreground">{project.title}</h3>
-                                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
+                                        <h3 className="text-2xl md:text-3xl font-serif font-bold text-white">{project.title}</h3>
+                                        <p className="text-base md:text-lg text-gray-300 leading-relaxed">
                                             {project.description}
                                         </p>
                                     </div>
@@ -203,9 +203,9 @@ const SocialResponsibilityPage = () => {
             <div className="container mx-auto px-4 lg:px-8">
                 <div className="text-center mb-16 space-y-4 max-w-3xl mx-auto">
                     <p className="text-gold font-medium tracking-[0.25em] uppercase text-xs">Healthcare & Higher Education</p>
-                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-foreground">Major Philanthropic Contributions</h2>
+                    <h2 className="text-3xl md:text-5xl font-serif font-bold text-white">Major Philanthropic Contributions</h2>
                     <div className="w-16 h-[2px] bg-gold mx-auto" />
-                    <p className="text-muted-foreground text-base leading-relaxed">
+                    <p className="text-gray-300 text-base leading-relaxed">
                         Flagship infrastructure built and gifted by Muhammad Shafi Trust to serve regional communities.
                     </p>
                 </div>
@@ -227,7 +227,7 @@ const SocialResponsibilityPage = () => {
                                     </div>
 
                                     <div className="space-y-2">
-                                        <h3 className="text-2xl font-serif font-bold text-foreground group-hover:text-gold transition-colors">
+                                        <h3 className="text-2xl font-serif font-bold text-white group-hover:text-gold transition-colors">
                                             {project.title}
                                         </h3>
                                         <p className="text-xs text-gold font-medium flex items-center gap-2">
@@ -258,19 +258,19 @@ const SocialResponsibilityPage = () => {
                 <div className="flex flex-col lg:flex-row gap-12 items-center">
                     <div className="w-full lg:w-1/2 space-y-6">
                         <p className="text-gold font-medium tracking-[0.2em] uppercase text-sm">Sustainability</p>
-                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-foreground">Environmental Stewardship</h2>
+                        <h2 className="text-3xl md:text-4xl font-serif font-bold text-white">Environmental Stewardship</h2>
                         <div className="w-20 h-1 bg-gold" />
-                        <p className="text-lg text-muted-foreground leading-relaxed">
+                        <p className="text-lg text-gray-300 leading-relaxed">
                             As a leading leather manufacturer, we recognize our responsibility to the environment. Our state-of-the-art **Effluent Treatment Plant (ETP)** ensures that all industrial waste water is processed and neutralized according to international environmental standards before being discharged.
                         </p>
                         <ul className="space-y-4">
                             {[
                                 "Clean water discharge compliance",
                                 "Modern biological treatment process",
-                                "Zero-liquid discharge initiatives",
+                                "Advanced effluent treatment & biological clarification",
                                 "Continuous monitoring and laboratory testing"
                             ].map((item, i) => (
-                                <li key={i} className="flex items-center gap-3 text-muted-foreground">
+                                <li key={i} className="flex items-center gap-3 text-gray-300">
                                     <div className="w-1.5 h-1.5 rounded-full bg-gold" />
                                     {item}
                                 </li>

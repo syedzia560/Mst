@@ -179,7 +179,7 @@ const HomePage = () => {
                 <Button 
                   size="lg" 
                   asChild 
-                  className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-8 py-6 rounded-sm shadow-lg hover:shadow-[0_0_25px_rgba(197,160,89,0.4)] transition-all"
+                  className="bg-gold text-black hover:bg-gold/90 font-semibold uppercase tracking-[0.16em] text-xs px-5 sm:px-8 py-4 sm:py-6 rounded-sm shadow-lg hover:shadow-[0_0_25px_rgba(197,160,89,0.4)] transition-all max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center"
                 >
                   <Link to="/fashion">Explore Our Leather</Link>
                 </Button>
@@ -187,7 +187,7 @@ const HomePage = () => {
                   variant="outline" 
                   size="lg" 
                   asChild 
-                  className="border border-white/30 text-white hover:bg-white/10 hover:border-white rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-8 py-6 transition-all"
+                  className="border border-white/30 text-white hover:bg-white/10 hover:border-white rounded-sm uppercase tracking-[0.16em] text-xs font-semibold px-5 sm:px-8 py-4 sm:py-6 transition-all max-w-full text-center whitespace-normal sm:whitespace-nowrap inline-flex items-center justify-center"
                 >
                   <Link to="/contact">Contact Our Team</Link>
                 </Button>
@@ -212,9 +212,9 @@ const HomePage = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center divide-y md:divide-y-0 md:divide-x divide-white/10 pb-12 mb-12 border-b border-white/10">
               {stats.map((stat, index) => (
                 <div key={index} className="flex flex-col items-center justify-center p-4 group">
-                  <h3 className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gold mb-2 group-hover:scale-105 transition-transform duration-300">
+                  <span className="block text-4xl md:text-5xl lg:text-6xl font-serif font-bold text-gold mb-2 group-hover:scale-105 transition-transform duration-300">
                     <Counter end={stat.value} suffix={stat.suffix} />
-                  </h3>
+                  </span>
                   <p className="text-gray-300 uppercase tracking-[0.18em] text-xs md:text-sm font-medium">
                     {stat.label}
                   </p>
@@ -562,10 +562,10 @@ const HomePage = () => {
                   <div className="pt-4 border-t border-white/10 flex items-center gap-4">
                     <div className="w-10 h-[2px] bg-gold" />
                     <div>
-                      <h4 className="text-base font-sans font-bold text-white uppercase tracking-wider">
+                      <h3 className="text-lg font-serif font-bold text-white tracking-wide">
                         {activeLeader.name}
-                      </h4>
-                      <p className="text-xs text-gold font-medium tracking-wide">
+                      </h3>
+                      <p className="text-xs text-gold font-sans font-medium uppercase tracking-[0.18em]">
                         {activeLeader.title}
                       </p>
                     </div>
