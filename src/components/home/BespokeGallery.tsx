@@ -106,7 +106,7 @@ const BespokeGallery = () => {
   const [activeItem, setActiveItem] = useState(bespokeItems[0]);
 
   return (
-    <section className="bg-background py-16 md:py-20 lg:py-24 border-b border-white/5 relative overflow-hidden">
+    <section className="bg-background pt-16 md:pt-20 lg:pt-24 pb-24 md:pb-28 lg:pb-32 border-b border-white/5 relative overflow-hidden">
       {/* Background Decor */}
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-gold/5 rounded-full blur-[140px] pointer-events-none" />
       <div className="absolute bottom-0 left-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] pointer-events-none" />
@@ -143,15 +143,16 @@ const BespokeGallery = () => {
         {/* Editorial Feature Layout */}
         <div className="grid lg:grid-cols-12 gap-8 items-stretch mb-12">
           {/* Spotlight Hero Leather Frame */}
-          <div className="lg:col-span-7 bg-card/40 border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col justify-between group">
-            <div className="relative aspect-[16/10] sm:aspect-[16/9] w-full overflow-hidden bg-black">
+          <div className="lg:col-span-7 bg-card/40 border border-white/10 rounded-xl overflow-hidden shadow-2xl flex flex-col group">
+            {/* Hero Image fills upper space seamlessly */}
+            <div className="relative flex-1 min-h-[340px] sm:min-h-[400px] w-full overflow-hidden bg-black">
               <img
                 src={activeItem.image}
                 alt={`MST Signature Leather - ${activeItem.title}`}
-                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
+                className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-105 animate-in fade-in duration-300"
                 key={activeItem.id}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent pointer-events-none" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/25 to-transparent pointer-events-none" />
               
               {/* Badges on Hero Image */}
               <div className="absolute top-4 left-4 flex items-center gap-2">
@@ -163,19 +164,19 @@ const BespokeGallery = () => {
                 </span>
               </div>
 
-              {/* Title Overlay on Mobile/Tablet */}
-              <div className="absolute bottom-4 left-4 right-4">
-                <p className="text-gold text-xs uppercase tracking-[0.2em] font-medium mb-1">
+              {/* Title Overlay at bottom of Hero Image */}
+              <div className="absolute bottom-5 left-6 right-6">
+                <p className="text-gold text-xs uppercase tracking-[0.22em] font-medium mb-1">
                   {activeItem.subtitle}
                 </p>
-                <h3 className="text-2xl sm:text-3xl font-serif font-bold text-white">
+                <h3 className="text-2xl sm:text-3xl md:text-4xl font-serif font-bold text-white tracking-tight">
                   {activeItem.title}
                 </h3>
               </div>
             </div>
 
-            {/* Technical Specifications Panel */}
-            <div className="p-6 md:p-8 space-y-6 bg-card/60">
+            {/* Technical Specifications Panel - connected directly beneath the hero image */}
+            <div className="p-6 md:p-8 space-y-5 bg-card/80 border-t border-white/10 flex-shrink-0">
               <p className="text-gray-300 text-sm md:text-base leading-relaxed">
                 {activeItem.description}
               </p>
@@ -214,7 +215,7 @@ const BespokeGallery = () => {
           </div>
 
           {/* Interactive Material Selector Grid */}
-          <div className="lg:col-span-5 flex flex-col justify-between">
+          <div className="lg:col-span-5 flex flex-col">
             <div className="space-y-2 mb-4">
               <span className="text-xs uppercase tracking-widest text-gold font-medium flex items-center gap-2">
                 <Layers className="w-3.5 h-3.5" />
@@ -223,34 +224,47 @@ const BespokeGallery = () => {
               <p className="text-xs text-gray-400">Click any hide article below to review technical tannage and caliper specs.</p>
             </div>
 
-            <div className="grid grid-cols-2 gap-3 flex-grow">
+            <div className="grid grid-cols-2 gap-3">
               {bespokeItems.map((item) => {
                 const isSelected = item.id === activeItem.id;
                 return (
                   <button
                     key={item.id}
+                    type="button"
                     onClick={() => setActiveItem(item)}
-                    className={`text-left p-3 rounded-lg border transition-all duration-300 flex flex-col justify-between group relative overflow-hidden ${
+                    aria-pressed={isSelected}
+                    aria-label={`Select article ${item.id}: ${item.title} (${item.subtitle})`}
+                    className={`w-full text-left p-3 rounded-lg border transition-all duration-300 flex flex-col justify-between group relative overflow-hidden cursor-pointer select-none active:scale-[0.98] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold ${
                       isSelected 
-                        ? "bg-card border-gold shadow-[0_0_15px_rgba(197,160,89,0.2)] ring-1 ring-gold" 
-                        : "bg-card/40 border-white/10 hover:border-gold/40 hover:bg-card/70"
+                        ? "bg-card border-gold shadow-[0_0_15px_rgba(197,160,89,0.25)] ring-1 ring-gold" 
+                        : "bg-card/40 border-white/10 hover:border-gold/50 hover:bg-card/70 hover:shadow-[0_4px_12px_rgba(0,0,0,0.4)]"
                     }`}
                   >
-                    <div className="aspect-[4/3] w-full rounded overflow-hidden mb-2 relative bg-black/50">
+                    <div className="aspect-[16/10] w-full rounded overflow-hidden mb-2.5 relative bg-black/50 pointer-events-none select-none">
                       <img
                         src={item.image}
                         alt={item.title}
-                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                        className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 pointer-events-none select-none"
                         loading="lazy"
+                        draggable={false}
                       />
-                      {isSelected && (
-                        <div className="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-gold shadow-sm" />
+                      {isSelected ? (
+                        <div className="absolute top-2 right-2 px-2 py-0.5 rounded bg-gold text-black text-[9px] font-bold uppercase tracking-wider shadow">
+                          Active
+                        </div>
+                      ) : (
+                        <div className="absolute top-2 right-2 px-1.5 py-0.5 rounded bg-black/70 backdrop-blur-sm border border-white/20 text-white/80 text-[9px] font-medium opacity-0 group-hover:opacity-100 transition-opacity">
+                          Inspect
+                        </div>
                       )}
                     </div>
-                    <div>
-                      <h4 className={`text-xs font-semibold uppercase tracking-wider truncate ${isSelected ? "text-gold" : "text-white group-hover:text-gold"}`}>
-                        {item.title}
-                      </h4>
+                    <div className="pointer-events-none select-none">
+                      <div className="flex items-center justify-between gap-1 mb-0.5">
+                        <h4 className={`text-xs font-semibold uppercase tracking-wider truncate ${isSelected ? "text-gold" : "text-white group-hover:text-gold"}`}>
+                          {item.title}
+                        </h4>
+                        <span className="text-[10px] text-gray-500 font-mono">#{item.id.toString().padStart(2, "0")}</span>
+                      </div>
                       <p className="text-[10px] text-gray-400 truncate">
                         {item.subtitle}
                       </p>

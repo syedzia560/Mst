@@ -9,6 +9,8 @@ import ScrollToTop from "./components/layout/ScrollToTop";
 import ScrollToHash from "./components/layout/ScrollToHash";
 import { usePageTracking } from "./lib/analytics";
 
+import WhatsAppFloat from "./components/common/WhatsAppFloat";
+
 // Analytics tracker component to safely record SPA page transitions
 const AnalyticsTracker = () => {
   usePageTracking();
@@ -70,6 +72,7 @@ const App = () => (
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
+          <WhatsAppFloat />
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>
